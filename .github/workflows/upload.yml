@@ -27,14 +27,17 @@ jobs:
       - name: Fix permissions
         run: chmod +x debian/rules
 
-      # - name: Install build dependencies
-      #   run: mk-build-deps -i -t "apt-get --yes" -r
+      - name: Vendor dependencies
+        run: |
+          mkdir -p .cargo
+          cargo vendor --locked | head -n -1 > .cargo/config
+          echo 'directory = "vendor"' >> .cargo/config
+          tar pcf vendor.tar vendor
+          rm -rf vendor
 
       - name: Build source package
         run: |
-          dpkg-buildpackage -S -us -uc -d
-        env:
-          DEB_BUILD_OPTIONS: nocheck
+          CLEAN=0 VENDOR=0 dpkg-buildpackage -S -us -uc -d
       
       - name: Collect files
         run: |
