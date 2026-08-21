@@ -1,12 +1,12 @@
-[package]
+﻿[package]
 name = "cosmic-applet-notifications"
 version = "1.0.15"
 edition = "2024"
 license = "GPL-3.0-only"
 
 [dependencies]
-cosmic-notifications-util = { git = "https://github.com/pop-os/cosmic-notifications" }
-cosmic-notifications-config = { git = "https://github.com/pop-os/cosmic-notifications" }
+cosmic-notifications-util = { git = "https://github.com/Matrinsoft/lingmo-notifications" }
+cosmic-notifications-config = { git = "https://github.com/Matrinsoft/lingmo-notifications" }
 anyhow.workspace = true
 libcosmic.workspace = true
 tokio.workspace = true

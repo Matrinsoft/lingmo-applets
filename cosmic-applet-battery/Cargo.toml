@@ -1,4 +1,4 @@
-[package]
+﻿[package]
 name = "cosmic-applet-battery"
 version = "1.0.15"
 edition = "2024"
@@ -24,9 +24,9 @@ zbus.workspace = true
 serde.workspace = true
 
 [dependencies.cosmic-settings-upower-subscription]
-git = "https://github.com/pop-os/cosmic-settings"
+git = "https://github.com/Matrinsoft/lingmo-settings"
 # path = "../../cosmic-settings/subscriptions/upower"
 
 [dependencies.cosmic-settings-daemon-subscription]
-git = "https://github.com/pop-os/cosmic-settings"
+git = "https://github.com/Matrinsoft/lingmo-settings"
 # path = "../../cosmic-settings/subscriptions/settings-daemon"

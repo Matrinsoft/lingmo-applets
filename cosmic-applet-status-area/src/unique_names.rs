@@ -1,7 +1,7 @@
-// Copyright 2026 System76 <info@system76.com>
+﻿// Copyright 2026 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-// Based on https://github.com/pop-os/cosmic-comp/blob/master/src/dbus/name_owners.rs,
+// Based on https://github.com/Matrinsoft/lingmo-comp/blob/master/src/dbus/name_owners.rs,
 // but only tracking unique names, and using tokio executor.
 
 use futures::StreamExt;
