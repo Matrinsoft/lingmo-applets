@@ -1,0 +1,2 @@
+cancel = Cancel
+connected = Connected
