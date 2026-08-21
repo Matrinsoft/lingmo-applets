@@ -15,7 +15,7 @@ override_dh_auto_clean:
 		cargo clean; \
 	fi
 
-	if ! ischroot && test "${VENDOR}" = "1"; then \
+	if ! ischroot && test "${VENDOR}" = "1" && ! test -f vendor.tar; then \
 		just vendor; \
 	fi
 
