@@ -33,6 +33,8 @@ jobs:
       - name: Build source package
         run: |
           dpkg-buildpackage -S -us -uc -d
+        env:
+          DEB_BUILD_OPTIONS: nocheck
       
       - name: Collect files
         run: |
