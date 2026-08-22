@@ -9,7 +9,7 @@ futures.workspace = true
 i18n-embed-fl.workspace = true
 i18n-embed.workspace = true
 libcosmic.workspace = true
-mpris2-zbus = { git = "https://github.com/Matrinsoft/dbus-settings-bindings" }
+mpris2-zbus = { git = "https://github.com/pop-os/dbus-settings-bindings" }
 rust-embed.workspace = true
 serde.workspace = true
 tokio.workspace = true
