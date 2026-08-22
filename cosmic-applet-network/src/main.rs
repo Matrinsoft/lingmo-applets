@@ -1,6 +1,6 @@
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-fn main() -> lingmo::iced::Result {
+fn main() -> cosmic::iced::Result {
     tracing_subscriber::fmt::init();
     let _ = tracing_log::LogTracer::init();
 

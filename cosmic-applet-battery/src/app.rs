@@ -10,7 +10,7 @@ use crate::{
     dgpu::{Entry, GpuUpdate, dgpu_subscription},
     fl,
 };
-use lingmo::{
+use cosmic::{
     Element, Task, app,
     applet::{
         Size,
@@ -59,8 +59,8 @@ fn format_duration(duration: Duration) -> String {
     }
 }
 
-pub fn run() -> lingmo::iced::Result {
-    lingmo::applet::run::<CosmicBatteryApplet>(())
+pub fn run() -> cosmic::iced::Result {
+    cosmic::applet::run::<CosmicBatteryApplet>(())
 }
 
 #[derive(Clone, Default)]
@@ -72,7 +72,7 @@ struct GPUData {
 
 #[derive(Clone, Default)]
 struct CosmicBatteryApplet {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     config: BatteryAppletConfig,
     icon_name: String,
     display_icon_name: String,
@@ -215,23 +215,23 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl lingmo::Application for CosmicBatteryApplet {
+impl cosmic::Application for CosmicBatteryApplet {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = config::APP_ID;
 
-    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         let config = Config::new(Self::APP_ID, BatteryAppletConfig::VERSION)
             .ok()
             .and_then(|c| BatteryAppletConfig::get_entry(&c).ok())
             .unwrap_or_default();
 
         let zbus_session_cmd = Task::perform(zbus::Connection::session(), |res| {
-            lingmo::Action::App(Message::ZbusConnection(res))
+            cosmic::Action::App(Message::ZbusConnection(res))
         });
         let init_charging_limit_cmd = Task::perform(get_charging_limit(), |limit| {
-            lingmo::Action::App(Message::InitChargingLimit(limit.ok()))
+            cosmic::Action::App(Message::InitChargingLimit(limit.ok()))
         });
         (
             Self {
@@ -247,11 +247,11 @@ impl lingmo::Application for CosmicBatteryApplet {
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
@@ -262,7 +262,7 @@ impl lingmo::Application for CosmicBatteryApplet {
 
                 if !self.dragging_kbd_brightness {
                     self.dragging_kbd_brightness = true;
-                    return lingmo::task::message(Message::SetKbdBrightnessDebounced);
+                    return cosmic::task::message(Message::SetKbdBrightnessDebounced);
                 }
             }
             // Matching brightness calculation logic from cosmic-osd and cosmic-settings-daemon
@@ -283,7 +283,7 @@ impl lingmo::Application for CosmicBatteryApplet {
                 if !self.dragging_screen_brightness {
                     self.dragging_screen_brightness = true;
                     self.update_display();
-                    return lingmo::task::message(Message::SetScreenBrightnessDebounced);
+                    return cosmic::task::message(Message::SetScreenBrightnessDebounced);
                 }
             }
             Message::SetKbdBrightnessDebounced => {
@@ -295,9 +295,9 @@ impl lingmo::Application for CosmicBatteryApplet {
                         let _ = tx.send(KeyboardBacklightRequest::Set(b));
                     }
                 }
-                return lingmo::iced::Task::perform(
+                return cosmic::iced::Task::perform(
                     tokio::time::sleep(Duration::from_millis(200)),
-                    |()| lingmo::Action::App(Message::SetKbdBrightnessDebounced),
+                    |()| cosmic::Action::App(Message::SetKbdBrightnessDebounced),
                 );
             }
             Message::SetScreenBrightnessDebounced => {
@@ -310,9 +310,9 @@ impl lingmo::Application for CosmicBatteryApplet {
                         let _ = tx.send(settings_daemon::Request::SetDisplayBrightness(b));
                     }
                 }
-                return lingmo::iced::Task::perform(
+                return cosmic::iced::Task::perform(
                     tokio::time::sleep(Duration::from_millis(200)),
-                    |()| lingmo::Action::App(Message::SetScreenBrightnessDebounced),
+                    |()| cosmic::Action::App(Message::SetScreenBrightnessDebounced),
                 );
             }
             Message::ReleaseKbdBrightness => {
@@ -342,12 +342,12 @@ impl lingmo::Application for CosmicBatteryApplet {
                 self.set_charging_limit(enable);
 
                 if enable {
-                    return lingmo::iced::Task::perform(set_charging_limit(), |_| {
-                        lingmo::Action::None
+                    return cosmic::iced::Task::perform(set_charging_limit(), |_| {
+                        cosmic::Action::None
                     });
                 } else {
-                    return lingmo::iced::Task::perform(unset_charging_limit(), |_| {
-                        lingmo::Action::None
+                    return cosmic::iced::Task::perform(unset_charging_limit(), |_| {
+                        cosmic::Action::None
                     });
                 }
             }
@@ -371,8 +371,8 @@ impl lingmo::Application for CosmicBatteryApplet {
                     if let Some(tx) = self.update_trigger.as_ref() {
                         let _ = tx.send(());
                     }
-                    let mut tasks = vec![lingmo::surface::surface_task(
-                        lingmo::surface::action::app_popup(
+                    let mut tasks = vec![cosmic::surface::surface_task(
+                        cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             |app: &mut Self| {
                                 let new_id = window::Id::unique();
@@ -397,7 +397,7 @@ impl lingmo::Application for CosmicBatteryApplet {
                     // Try again every time a popup is opened
                     if self.charging_limit.is_none() {
                         tasks.push(Task::perform(get_charging_limit(), |limit| {
-                            lingmo::Action::App(Message::InitChargingLimit(limit.ok()))
+                            cosmic::Action::App(Message::InitChargingLimit(limit.ok()))
                         }));
                     }
                     return Task::batch(tasks);
@@ -480,7 +480,7 @@ impl lingmo::Application for CosmicBatteryApplet {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(lingmo::process::spawn(cmd));
+                    tokio::spawn(cosmic::process::spawn(cmd));
                 }
             },
             Message::GpuInit(tx) => {
@@ -525,8 +525,8 @@ impl lingmo::Application for CosmicBatteryApplet {
                 }
             },
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -566,7 +566,7 @@ impl lingmo::Application for CosmicBatteryApplet {
             };
 
             children.push(
-                t.font(lingmo::font::default())
+                t.font(cosmic::font::default())
                     .height(Length::Fixed(suggested_size.1 as f32))
                     .align_x(Alignment::Center)
                     .align_y(Alignment::Center)
@@ -603,7 +603,7 @@ impl lingmo::Application for CosmicBatteryApplet {
         } else {
             let dot = container(space::vertical().height(Length::Fixed(0.0)))
                 .padding(2.0)
-                .class(lingmo::style::Container::Custom(Box::new(|theme| {
+                .class(cosmic::style::Container::Custom(Box::new(|theme| {
                     container::Style {
                         text_color: Some(Color::TRANSPARENT),
                         background: Some(Background::Color(theme.cosmic().accent_color().into())),
@@ -624,7 +624,7 @@ impl lingmo::Application for CosmicBatteryApplet {
                 PanelAnchor::Bottom => (Alignment::Center, Alignment::End),
             };
 
-            lingmo::iced::widget::stack![
+            cosmic::iced::widget::stack![
                 btn,
                 container(dot)
                     .width(Length::Fill)
@@ -847,7 +847,7 @@ impl lingmo::Application for CosmicBatteryApplet {
                                 .height(Length::Fixed(0.0))
                         )
                         .padding(4)
-                        .class(lingmo::style::Container::Custom(Box::new(|theme| {
+                        .class(cosmic::style::Container::Custom(Box::new(|theme| {
                             container::Style {
                                 text_color: Some(Color::TRANSPARENT),
                                 background: Some(Background::Color(
@@ -994,7 +994,7 @@ impl lingmo::Application for CosmicBatteryApplet {
         Some(Message::CloseRequested(id))
     }
 
-    fn style(&self) -> Option<lingmo::iced::theme::Style> {
-        Some(lingmo::applet::style())
+    fn style(&self) -> Option<cosmic::iced::theme::Style> {
+        Some(cosmic::applet::style())
     }
 }

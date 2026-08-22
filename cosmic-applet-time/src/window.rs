@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use lingmo::{
+use cosmic::{
     Apply, Element, Task, app,
     applet::{cosmic_panel_config::PanelAnchor, menu_button, padded_control},
     cctk::sctk::reexports::calloop,
@@ -34,7 +34,7 @@ use timedate_zbus::TimeDateProxy;
 use tokio::{sync::watch, time};
 
 use crate::{config::TimeAppletConfig, fl, time::get_calendar_first};
-use lingmo::applet::token::subscription::{
+use cosmic::applet::token::subscription::{
     TokenRequest, TokenUpdate, activation_token_subscription,
 };
 use icu::{
@@ -79,7 +79,7 @@ fn get_system_locale() -> Locale {
 }
 
 pub struct Window {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     popup: Option<window::Id>,
     now: Zoned,
     timezone: Option<TimeZone>,
@@ -314,9 +314,9 @@ impl Window {
     }
 }
 
-impl lingmo::Application for Window {
+impl cosmic::Application for Window {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &str = "com.system76.CosmicAppletTime";
 
@@ -348,16 +348,16 @@ impl lingmo::Application for Window {
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
-    fn style(&self) -> Option<lingmo::iced::theme::Style> {
-        Some(lingmo::applet::style())
+    fn style(&self) -> Option<cosmic::iced::theme::Style> {
+        Some(cosmic::applet::style())
     }
 
     fn subscription(&self) -> Subscription<Message> {
@@ -520,7 +520,7 @@ impl lingmo::Application for Window {
                 if let Some(p) = self.popup.take() {
                     destroy_popup(p)
                 } else {
-                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Self| {
                             app.date_today = app.now.date();
@@ -631,7 +631,7 @@ impl lingmo::Application for Window {
                             cmd.env("XDG_ACTIVATION_TOKEN", &token);
                             cmd.env("DESKTOP_STARTUP_ID", &token);
                         }
-                        tokio::spawn(lingmo::process::spawn(cmd));
+                        tokio::spawn(cosmic::process::spawn(cmd));
                     }
                 }
                 Task::none()
@@ -673,8 +673,8 @@ impl lingmo::Application for Window {
                 self.update(Message::Tick)
             }
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -697,7 +697,7 @@ impl lingmo::Application for Window {
             [self.core.applet.suggested_padding(true).0, 0]
         })
         .on_press_down(Message::TogglePopup)
-        .class(lingmo::theme::Button::AppletIcon);
+        .class(cosmic::theme::Button::AppletIcon);
 
         autosize::autosize(
             if let Some(tracker) = self.rectangle_tracker.as_ref() {

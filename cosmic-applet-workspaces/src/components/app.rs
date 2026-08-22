@@ -10,7 +10,7 @@ use cctk::{
     },
     workspace::Workspace,
 };
-use lingmo::{
+use cosmic::{
     Element, Task, Theme, app,
     applet::cosmic_panel_config::PanelAnchor,
     iced::core::{Background, Border},
@@ -38,8 +38,8 @@ static AUTOSIZE_MAIN_ID: LazyLock<Id> = LazyLock::new(|| Id::new("autosize-main"
 
 const SCROLL_RATE_LIMIT: Duration = Duration::from_millis(200);
 
-pub fn run() -> lingmo::iced::Result {
-    lingmo::applet::run::<IcedWorkspacesApplet>(())
+pub fn run() -> cosmic::iced::Result {
+    cosmic::applet::run::<IcedWorkspacesApplet>(())
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -49,7 +49,7 @@ pub enum Layout {
 }
 
 struct IcedWorkspacesApplet {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     workspaces: Vec<Workspace>,
     workspace_tx: Option<SyncSender<WorkspaceEvent>>,
     layout: Layout,
@@ -92,13 +92,13 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl lingmo::Application for IcedWorkspacesApplet {
+impl cosmic::Application for IcedWorkspacesApplet {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = config::APP_ID;
 
-    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         (
             Self {
                 layout: match &core.applet.anchor {
@@ -114,11 +114,11 @@ impl lingmo::Application for IcedWorkspacesApplet {
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
@@ -166,8 +166,8 @@ impl lingmo::Application for IcedWorkspacesApplet {
                 let _ = ShellCommand::new("cosmic-workspaces").spawn();
             }
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -188,7 +188,7 @@ impl lingmo::Application for IcedWorkspacesApplet {
         let popup_index = self.popup_index().unwrap_or(self.workspaces.len());
 
         let buttons = self.workspaces[..popup_index].iter().map(|w| {
-            let content = self.core.applet.text(&w.name).font(lingmo::font::bold());
+            let content = self.core.applet.text(&w.name).font(cosmic::font::bold());
 
             let (width, height) = if self.core.applet.is_horizontal() {
                 (suggested_total as f32, suggested_window_size.1.get() as f32)
@@ -219,7 +219,7 @@ impl lingmo::Application for IcedWorkspacesApplet {
 
             btn.class(
                 if w.state.contains(ext_workspace_handle_v1::State::Active) {
-                    lingmo::theme::iced::Button::Primary
+                    cosmic::theme::iced::Button::Primary
                 } else if w.state.contains(ext_workspace_handle_v1::State::Urgent) {
                     let appearance = |theme: &Theme| {
                         let cosmic = theme.cosmic();
@@ -234,7 +234,7 @@ impl lingmo::Application for IcedWorkspacesApplet {
                             ..button::Style::default()
                         }
                     };
-                    lingmo::theme::iced::Button::Custom(Box::new(
+                    cosmic::theme::iced::Button::Custom(Box::new(
                         move |theme, status| match status {
                             button::Status::Active => appearance(theme),
                             button::Status::Hovered => button::Style {
@@ -265,7 +265,7 @@ impl lingmo::Application for IcedWorkspacesApplet {
                             ..button::Style::default()
                         }
                     };
-                    lingmo::theme::iced::Button::Custom(Box::new(
+                    cosmic::theme::iced::Button::Custom(Box::new(
                         move |theme, status| match status {
                             button::Status::Active => appearance(theme),
                             button::Status::Hovered => button::Style {
@@ -319,7 +319,7 @@ impl lingmo::Application for IcedWorkspacesApplet {
         ])
     }
 
-    fn style(&self) -> Option<lingmo::iced::theme::Style> {
-        Some(lingmo::applet::style())
+    fn style(&self) -> Option<cosmic::iced::theme::Style> {
+        Some(cosmic::applet::style())
     }
 }

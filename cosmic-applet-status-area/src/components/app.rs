@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use lingmo::{
+use cosmic::{
     Element, Task, app,
     applet::{
         cosmic_panel_config::PanelAnchor,
@@ -104,7 +104,7 @@ impl App {
         }
     }
 
-    fn view_overflow_popup(&self) -> lingmo::Element<'_, Msg> {
+    fn view_overflow_popup(&self) -> cosmic::Element<'_, Msg> {
         // Render the overflow popup with the menus that are not shown in the main view
         let overflow_index = self.overflow_index().unwrap_or(0);
         let children = self.menus.iter().skip(overflow_index).map(|(id, menu)| {
@@ -132,9 +132,9 @@ impl App {
     }
 }
 
-impl lingmo::Application for App {
+impl cosmic::Application for App {
     type Message = Msg;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = "com.system76.CosmicAppletStatusArea";
 
@@ -157,7 +157,7 @@ impl lingmo::Application for App {
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(lingmo::applet::style())
+        Some(cosmic::applet::style())
     }
 
     fn update(&mut self, message: Msg) -> app::Task<Msg> {
@@ -186,7 +186,7 @@ impl lingmo::Application for App {
             Msg::StatusMenu((id, msg)) => match self.menus.get_mut(&id) {
                 Some(state) => state
                     .update(msg, id, self.token_tx.as_ref())
-                    .map(move |msg| lingmo::action::app(Msg::StatusMenu((id, msg)))),
+                    .map(move |msg| cosmic::action::app(Msg::StatusMenu((id, msg)))),
                 None => Task::none(),
             },
             Msg::StatusNotifier(event) => match event {
@@ -203,13 +203,13 @@ impl lingmo::Application for App {
                     {
                         *m = state;
                         let id = *id;
-                        return cmd.map(move |msg| lingmo::action::app(Msg::StatusMenu((id, msg))));
+                        return cmd.map(move |msg| cosmic::action::app(Msg::StatusMenu((id, msg))));
                     }
                     let id = self.next_menu_id();
                     self.menus.insert(id, state);
                     app::Task::batch([
                         self.resize_window(),
-                        cmd.map(move |msg| lingmo::action::app(Msg::StatusMenu((id, msg)))),
+                        cmd.map(move |msg| cosmic::action::app(Msg::StatusMenu((id, msg)))),
                     ])
                 }
                 status_notifier_watcher::Event::Unregistered(name) => {
@@ -247,7 +247,7 @@ impl lingmo::Application for App {
                     }
 
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let popup_id = app.next_popup_id();
@@ -325,7 +325,7 @@ impl lingmo::Application for App {
                                 id,
                                 self.token_tx.as_ref(),
                             )
-                            .map(move |msg| lingmo::action::app(Msg::StatusMenu((id, msg))));
+                            .map(move |msg| cosmic::action::app(Msg::StatusMenu((id, msg))));
                     }
                     return Task::none();
                 }
@@ -349,7 +349,7 @@ impl lingmo::Application for App {
                 } else {
                     return Task::none();
                 }
-                let popup_task = lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                let popup_task = cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                     |_| Default::default(),
                     move |app: &mut Self| {
                         let popup_id = app.next_popup_id();
@@ -408,8 +408,8 @@ impl lingmo::Application for App {
                 scroll(id, menu.item.item_proxy().clone(), delta, orientation)
             }
             Msg::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
             Msg::ToggleOverflow => {
@@ -420,7 +420,7 @@ impl lingmo::Application for App {
                 } else if let Some(overflow_index) = self.overflow_index() {
                     // If we don't have an overflow, create it
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let popup_id = app.next_popup_id();
@@ -475,7 +475,7 @@ impl lingmo::Application for App {
                 let Some(i) = self.overflow_index() else {
                     return Task::batch(cmds);
                 };
-                let popup_task = lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                let popup_task = cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                     |_| Default::default(),
                     move |app: &mut Self| {
                         let popup_id = app.next_popup_id();
@@ -532,7 +532,7 @@ impl lingmo::Application for App {
         iced::Subscription::batch(subscriptions)
     }
 
-    fn view(&self) -> lingmo::Element<'_, Msg> {
+    fn view(&self) -> cosmic::Element<'_, Msg> {
         let overflow_index = self.overflow_index();
 
         let children = self
@@ -577,7 +577,7 @@ impl lingmo::Application for App {
             .into()
     }
 
-    fn view_window(&self, surface: window::Id) -> lingmo::Element<'_, Msg> {
+    fn view_window(&self, surface: window::Id) -> cosmic::Element<'_, Msg> {
         if self
             .overflow_popup
             .as_ref()
@@ -615,9 +615,9 @@ fn activate(
     id: usize,
     item: &StatusNotifierItem,
     activation_token: Option<String>,
-) -> Task<lingmo::Action<Msg>> {
+) -> Task<cosmic::Action<Msg>> {
     if item.is_menu() {
-        return Task::done(lingmo::action::app(Msg::TogglePopup(id)));
+        return Task::done(cosmic::action::app(Msg::TogglePopup(id)));
     }
     let item_proxy = item.item_proxy().clone();
     Task::future(async move {
@@ -630,10 +630,10 @@ fn activate(
             }
         }
         match item_proxy.activate(0, 0).await {
-            Ok(_) => lingmo::action::app(Msg::None),
+            Ok(_) => cosmic::action::app(Msg::None),
             Err(err) => {
                 tracing::error!("Activate failed: {}", err);
-                lingmo::action::app(Msg::TogglePopup(id))
+                cosmic::action::app(Msg::TogglePopup(id))
             }
         }
     })
@@ -644,13 +644,13 @@ fn scroll(
     item_proxy: crate::subscriptions::status_notifier_item::StatusNotifierItemProxy<'static>,
     delta: i32,
     orientation: &'static str,
-) -> Task<lingmo::Action<Msg>> {
+) -> Task<cosmic::Action<Msg>> {
     Task::future(async move {
         match item_proxy.scroll(delta, orientation).await {
-            Ok(_) => lingmo::action::app(Msg::None),
+            Ok(_) => cosmic::action::app(Msg::None),
             Err(err) => {
                 tracing::error!("Scroll failed for {}: {}", id, err);
-                lingmo::action::app(Msg::None)
+                cosmic::action::app(Msg::None)
             }
         }
     })
@@ -667,12 +667,12 @@ fn discrete_scroll_delta(delta: DiscreteScrollDelta) -> Option<(i32, &'static st
 }
 
 fn menu_icon_button<'a>(
-    applet: &'a lingmo::applet::Context,
+    applet: &'a cosmic::applet::Context,
     menu: &'a status_menu::State,
-) -> lingmo::widget::Button<'a, Msg> {
+) -> cosmic::widget::Button<'a, Msg> {
     let icon = menu.icon_handle().clone();
 
-    let theme = lingmo::theme::active();
+    let theme = cosmic::theme::active();
     let theme = theme.cosmic();
 
     let suggested = applet.suggested_size(true);
@@ -685,17 +685,17 @@ fn menu_icon_button<'a>(
     // };
     let symbolic = icon.symbolic;
 
-    lingmo::widget::button::custom(
-        lingmo::widget::layer_container(
-            lingmo::widget::icon(icon)
+    cosmic::widget::button::custom(
+        cosmic::widget::layer_container(
+            cosmic::widget::icon(icon)
                 .class(if symbolic {
-                    lingmo::theme::Svg::Custom(std::rc::Rc::new(|theme| {
-                        lingmo::iced::widget::svg::Style {
+                    cosmic::theme::Svg::Custom(std::rc::Rc::new(|theme| {
+                        cosmic::iced::widget::svg::Style {
                             color: Some(theme.cosmic().background(theme.transparent).on.into()),
                         }
                     }))
                 } else {
-                    lingmo::theme::Svg::default()
+                    cosmic::theme::Svg::default()
                 })
                 .width(Length::Fixed(suggested.0 as f32))
                 .height(Length::Fixed(suggested.1 as f32)),
@@ -704,11 +704,11 @@ fn menu_icon_button<'a>(
     )
     .width(Length::Fixed((suggested.0 + 2 * padding) as f32))
     .height(Length::Fixed((suggested.1 + 2 * padding) as f32))
-    .class(lingmo::theme::Button::AppletIcon)
+    .class(cosmic::theme::Button::AppletIcon)
 }
 
 pub fn main() -> iced::Result {
-    lingmo::applet::run::<App>(())
+    cosmic::applet::run::<App>(())
 }
 
 #[cfg(test)]
@@ -718,7 +718,7 @@ mod tests {
     #[test]
     fn discrete_scroll_prefers_vertical_delta() {
         assert_eq!(
-            discrete_scroll_delta(lingmo::scroll::DiscreteScrollDelta { x: 4, y: -2 }),
+            discrete_scroll_delta(cosmic::scroll::DiscreteScrollDelta { x: 4, y: -2 }),
             Some((-2, "vertical"))
         );
     }
@@ -726,7 +726,7 @@ mod tests {
     #[test]
     fn discrete_scroll_uses_horizontal_delta_when_vertical_is_zero() {
         assert_eq!(
-            discrete_scroll_delta(lingmo::scroll::DiscreteScrollDelta { x: 3, y: 0 }),
+            discrete_scroll_delta(cosmic::scroll::DiscreteScrollDelta { x: 3, y: 0 }),
             Some((3, "horizontal"))
         );
     }
@@ -734,14 +734,14 @@ mod tests {
     #[test]
     fn discrete_scroll_ignores_zero_delta() {
         assert_eq!(
-            discrete_scroll_delta(lingmo::scroll::DiscreteScrollDelta { x: 0, y: 0 }),
+            discrete_scroll_delta(cosmic::scroll::DiscreteScrollDelta { x: 0, y: 0 }),
             None
         );
     }
 
     #[test]
     fn pixel_scroll_accumulates_before_emitting_discrete_delta() {
-        let mut state = lingmo::scroll::DiscreteScrollState::default();
+        let mut state = cosmic::scroll::DiscreteScrollState::default();
 
         let first = state.update(ScrollDelta::Pixels { x: 0.0, y: 12.0 });
         assert_eq!(discrete_scroll_delta(first), None);

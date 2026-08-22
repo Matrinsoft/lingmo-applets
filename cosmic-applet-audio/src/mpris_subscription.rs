@@ -3,7 +3,7 @@
 
 use std::{borrow::Cow, fmt::Debug, hash::Hash, path::PathBuf};
 
-use lingmo::{
+use cosmic::{
     iced::futures::{self, SinkExt, StreamExt, future::OptionFuture},
     iced::{self, Subscription, stream},
 };

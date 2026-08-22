@@ -9,7 +9,7 @@ pub(crate) mod window_image;
 use std::borrow::Cow;
 
 use crate::localize::localize;
-use lingmo::{
+use cosmic::{
     Task, app,
     applet::cosmic_panel_config::PanelAnchor,
     cctk::{
@@ -28,9 +28,9 @@ use lingmo::{
     widget::{autosize::autosize, mouse_area},
 };
 
-use lingmo::iced::widget::{Column, Row};
+use cosmic::iced::widget::{Column, Row};
 
-use lingmo::{Element, widget::tooltip};
+use cosmic::{Element, widget::tooltip};
 use std::sync::LazyLock;
 use wayland_subscription::{
     ToplevelRequest, ToplevelUpdate, WaylandImage, WaylandRequest, WaylandUpdate,
@@ -38,9 +38,9 @@ use wayland_subscription::{
 
 static AUTOSIZE_MAIN_ID: LazyLock<WidgetId> = LazyLock::new(|| WidgetId::new("autosize-main"));
 
-pub fn run() -> lingmo::iced::Result {
+pub fn run() -> cosmic::iced::Result {
     localize();
-    lingmo::applet::run::<Minimize>(())
+    cosmic::applet::run::<Minimize>(())
 }
 
 pub struct App {
@@ -53,7 +53,7 @@ pub struct App {
 
 #[derive(Default)]
 struct Minimize {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     locales: Vec<String>,
     desktop_entries: Vec<fde::DesktopEntry>,
     apps: Vec<App>,
@@ -129,13 +129,13 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl lingmo::Application for Minimize {
+impl cosmic::Application for Minimize {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = "com.system76.CosmicAppletMinimize";
 
-    fn init(core: lingmo::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
+    fn init(core: cosmic::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
         let mut app = Self {
             core,
             locales: fde::get_languages_from_env(),
@@ -143,23 +143,23 @@ impl lingmo::Application for Minimize {
         };
 
         app.update_desktop_entries();
-        let t = iced::window::minimize::<lingmo::Action<Message>>(
+        let t = iced::window::minimize::<cosmic::Action<Message>>(
             app.core.main_window_id().unwrap(),
             true,
         );
         (app, t)
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(lingmo::applet::style())
+        Some(cosmic::applet::style())
     }
 
     fn update(&mut self, message: Message) -> app::Task<Message> {
@@ -248,11 +248,11 @@ impl lingmo::Application for Minimize {
             }
             Message::OpenOverflowPopup => {
                 if let Some(id) = self.overflow_popup.take() {
-                    return lingmo::surface::surface_task(lingmo::surface::action::destroy_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::destroy_popup(
                         id,
                     ));
                 } else {
-                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Self| {
                             let new_id = window::Id::unique();
@@ -294,8 +294,8 @@ impl lingmo::Application for Minimize {
             }
             Message::CloseOverflowPopup => todo!(),
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -370,14 +370,14 @@ impl lingmo::Application for Minimize {
             PanelAnchor::Top | PanelAnchor::Bottom
         ) {
             Row::with_children(icon_buttons)
-                .align_y(lingmo::iced::core::Alignment::Center)
+                .align_y(cosmic::iced::core::Alignment::Center)
                 .height(Length::Shrink)
                 .width(Length::Shrink)
                 .spacing(spacing as f32)
                 .into()
         } else {
             Column::with_children(icon_buttons)
-                .align_x(lingmo::iced::core::Alignment::Center)
+                .align_x(cosmic::iced::core::Alignment::Center)
                 .height(Length::Shrink)
                 .width(Length::Shrink)
                 .spacing(spacing as f32)
@@ -465,13 +465,13 @@ impl lingmo::Application for Minimize {
                 ) {
                     Element::from(
                         Row::with_children(icon_buttons)
-                            .align_y(lingmo::iced::core::Alignment::Center)
+                            .align_y(cosmic::iced::core::Alignment::Center)
                             .height(Length::Shrink)
                             .width(Length::Shrink),
                     )
                 } else {
                     Column::with_children(icon_buttons)
-                        .align_x(lingmo::iced::core::Alignment::Center)
+                        .align_x(cosmic::iced::core::Alignment::Center)
                         .height(Length::Shrink)
                         .width(Length::Shrink)
                         .into()

@@ -38,7 +38,7 @@ i18n-embed = { version = "0.16.0", features = [
     "desktop-requester",
 ] }
 i18n-embed-fl = "0.10"
-liblingmo = { git = "https://github.com/Matrinsoft/liblingmo", default-features = false, features = [
+libcosmic = { git = "https://github.com/Matrinsoft/liblingmo", default-features = false, features = [
     "applet",
     "applet-token",
     "dbus-config",
@@ -72,11 +72,11 @@ ignored = ["libcosmic"]
 
 # [patch."https://github.com/Matrinsoft/liblingmo"]
 # cosmic-config = { path = "../libcosmic/cosmic-config" }
-# liblingmo = { path = "../libcosmic" }
+# libcosmic = { path = "../libcosmic" }
 # iced_futures = { path = "../libcosmic/iced/futures" }
-# cosmic-config = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
-# liblingmo = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
-# iced_futures = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
+# cosmic-config = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
+# libcosmic = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
+# iced_futures = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
 
 [patch."https://github.com/smithay/client-toolkit.git"]
 sctk = { package = "smithay-client-toolkit", version = "0.20.0" }

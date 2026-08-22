@@ -9,7 +9,7 @@ mod subscriptions;
 pub mod status_notifier_watcher;
 mod unique_names;
 
-pub fn run() -> lingmo::iced::Result {
+pub fn run() -> cosmic::iced::Result {
     if let Some(arg) = env::args().nth(1) {
         if arg == "--status-notifier-watcher" {
             status_notifier_watcher::run()

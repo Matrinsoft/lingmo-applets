@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use crate::subscriptions::freedesktop_proxy::NotificationsProxy;
-use lingmo::{
+use cosmic::{
     iced::futures::{self, SinkExt},
     iced::{Subscription, stream},
 };

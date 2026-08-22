@@ -19,7 +19,7 @@ use cctk::{
         workspace::v1::client::ext_workspace_handle_v1::ExtWorkspaceHandleV1,
     },
 };
-use lingmo::{
+use cosmic::{
     Apply, Element, Task, app,
     applet::{
         Context, Size,
@@ -53,7 +53,7 @@ use lingmo::{
         svg, text,
     },
 };
-use lingmo::{
+use cosmic::{
     desktop::fde::{self, DesktopEntry, get_languages_from_env, unicase::Ascii},
     widget::DndSource,
 };
@@ -68,8 +68,8 @@ use url::Url;
 
 static MIME_TYPE: &str = "text/uri-list";
 
-pub fn run() -> lingmo::iced::Result {
-    lingmo::applet::run::<CosmicAppList>(())
+pub fn run() -> cosmic::iced::Result {
+    cosmic::applet::run::<CosmicAppList>(())
 }
 
 #[derive(Debug, Clone)]
@@ -210,7 +210,7 @@ impl DockItem {
 
         let app_icon = AppletIconData::new(applet);
 
-        let cosmic_icon = lingmo::widget::icon(
+        let cosmic_icon = cosmic::widget::icon(
             fde::IconSource::from_unknown(desktop_info.icon().unwrap_or_default()).as_cosmic_icon(),
         )
         // sets the preferred icon size variant
@@ -315,7 +315,7 @@ impl DockItem {
 
         let path = desktop_info.path.clone();
         let icon_button = if dnd_source_enabled && interaction_enabled {
-            DndSource::with_id(icon_button, lingmo::widget::Id::new("asdfasdfadfs"))
+            DndSource::with_id(icon_button, cosmic::widget::Id::new("asdfasdfadfs"))
                 .window(window_id)
                 .drag_icon(move |_| {
                     (
@@ -357,7 +357,7 @@ pub struct Popup {
 
 #[derive(Clone, Default)]
 struct CosmicAppList {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     popup: Option<Popup>,
     subscription_ctr: u32,
     item_ctr: u32,
@@ -547,7 +547,7 @@ fn toplevel_button<'a>(
         .apply(Element::from)
 }
 
-fn window_menu_style(selected: bool) -> lingmo::theme::Button {
+fn window_menu_style(selected: bool) -> cosmic::theme::Button {
     let radius = theme::active()
         .cosmic()
         .radius_m()
@@ -598,7 +598,7 @@ fn window_menu_style(selected: bool) -> lingmo::theme::Button {
     }
 }
 
-fn app_list_icon_style(selected: bool) -> lingmo::theme::Button {
+fn app_list_icon_style(selected: bool) -> cosmic::theme::Button {
     Button::Custom {
         active: Box::new(move |focused, theme| {
             let a = button::Catalog::active(theme, focused, selected, &Button::AppletIcon);
@@ -695,7 +695,7 @@ impl CosmicAppList {
     }
 
     /// Close any open popups.
-    fn close_popups(&mut self) -> Task<lingmo::Action<Message>> {
+    fn close_popups(&mut self) -> Task<cosmic::Action<Message>> {
         let mut commands = Vec::new();
         if let Some(popup) = self.popup.take() {
             commands.push(destroy_popup(popup.id));
@@ -847,13 +847,13 @@ impl CosmicAppList {
     }
 }
 
-impl lingmo::Application for CosmicAppList {
+impl cosmic::Application for CosmicAppList {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = APP_ID;
 
-    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         let config = Config::new(APP_ID, AppListConfig::VERSION)
             .ok()
             .and_then(|c| AppListConfig::get_entry(&c).ok())
@@ -874,16 +874,16 @@ impl lingmo::Application for CosmicAppList {
         (
             app_list,
             Task::perform(try_get_gpus(), |gpus| {
-                lingmo::Action::App(Message::GpuRequest(gpus))
+                cosmic::Action::App(Message::GpuRequest(gpus))
             }),
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
@@ -918,7 +918,7 @@ impl lingmo::Application for CosmicAppList {
                     };
                     let corners = self.core.system_theme().cosmic().corner_radii.radius_s;
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             move |_| LiveSettings::default(),
                             move |app: &mut Self| {
                                 let new_id = window::Id::unique();
@@ -954,7 +954,7 @@ impl lingmo::Application for CosmicAppList {
                         ));
 
                     let gpu_update = Task::perform(try_get_gpus(), |gpus| {
-                        lingmo::Action::App(Message::GpuRequest(gpus))
+                        cosmic::Action::App(Message::GpuRequest(gpus))
                     });
                     return Task::batch([gpu_update, popup_task]);
                 }
@@ -999,7 +999,7 @@ impl lingmo::Application for CosmicAppList {
                         popup_type: PopupType::ToplevelList,
                     });
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let mut popup_settings = app.core.applet.get_popup_settings(
@@ -1206,7 +1206,7 @@ impl lingmo::Application for CosmicAppList {
                     // TODO dnd
                     return peek_dnd::<DndPathBuf>()
                         .map(Message::DndData)
-                        .map(lingmo::Action::App);
+                        .map(cosmic::Action::App);
                 }
             }
             Message::DndMotion(x, y) => {
@@ -1350,7 +1350,7 @@ impl lingmo::Application for CosmicAppList {
                             },
                             |()| Message::IncrementSubscriptionCtr,
                         )
-                        .map(lingmo::action::app);
+                        .map(cosmic::action::app);
                     }
                     WaylandUpdate::Toplevel(event) => match event {
                         ToplevelUpdate::Add(mut info) => {
@@ -1504,7 +1504,7 @@ impl lingmo::Application for CosmicAppList {
                             );
                         }
                         tokio::spawn(async move {
-                            lingmo::desktop::spawn_desktop_exec(
+                            cosmic::desktop::spawn_desktop_exec(
                                 exec,
                                 envs,
                                 app_id.as_deref(),
@@ -1622,7 +1622,7 @@ impl lingmo::Application for CosmicAppList {
                     };
 
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let mut popup_settings = app.core.applet.get_popup_settings(
@@ -1690,7 +1690,7 @@ impl lingmo::Application for CosmicAppList {
                     };
 
                     let popup_task =
-                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let mut popup_settings = app.core.applet.get_popup_settings(
@@ -1745,8 +1745,8 @@ impl lingmo::Application for CosmicAppList {
                 }
             }
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -2085,7 +2085,7 @@ impl lingmo::Application for CosmicAppList {
         let theme = self.core.system_theme();
 
         if let Some((_, item, _, _)) = self.dnd_source.as_ref().filter(|s| s.0 == id) {
-            lingmo::widget::icon(
+            cosmic::widget::icon(
                 fde::IconSource::from_unknown(item.desktop_info.icon().unwrap_or_default())
                     .as_cosmic_icon(),
             )
@@ -2121,7 +2121,7 @@ impl lingmo::Application for CosmicAppList {
                 PopupType::RightClickMenu => {
                     fn menu_button<'a, Message: Clone + 'a>(
                         content: impl Into<Element<'a, Message>>,
-                    ) -> lingmo::widget::Button<'a, Message> {
+                    ) -> cosmic::widget::Button<'a, Message> {
                         button::custom(content)
                             .height(20 + 2 * theme::spacing().space_xxs)
                             .class(Button::MenuItem)
@@ -2198,7 +2198,7 @@ impl lingmo::Application for CosmicAppList {
                         content = content.push(divider::horizontal::light());
                     }
 
-                    let svg_accent = Rc::new(|theme: &lingmo::Theme| {
+                    let svg_accent = Rc::new(|theme: &cosmic::Theme| {
                         let color = theme.cosmic().accent_color().into();
                         svg::Style { color: Some(color) }
                     });
@@ -2208,7 +2208,7 @@ impl lingmo::Application for CosmicAppList {
                                 row![
                                     icon::icon(from_name("checkbox-checked-symbolic").into())
                                         .size(16)
-                                        .class(lingmo::theme::Svg::Custom(svg_accent.clone())),
+                                        .class(cosmic::theme::Svg::Custom(svg_accent.clone())),
                                     text::body(fl!("pin"))
                                 ]
                             } else {
@@ -2510,14 +2510,14 @@ impl lingmo::Application for CosmicAppList {
         Subscription::batch([
             wayland_subscription().map(Message::Wayland),
             listen_with(|e, _, id| match e {
-                lingmo::iced::core::Event::PlatformSpecific(event::PlatformSpecific::Wayland(
+                cosmic::iced::core::Event::PlatformSpecific(event::PlatformSpecific::Wayland(
                     event::wayland::Event::Seat(e, seat),
                 )) => match e {
                     event::wayland::SeatEvent::Enter => Some(Message::NewSeat(seat)),
                     event::wayland::SeatEvent::Leave => Some(Message::RemovedSeat),
                 },
-                lingmo::iced::core::Event::Mouse(
-                    lingmo::iced::core::mouse::Event::ButtonPressed(_),
+                cosmic::iced::core::Event::Mouse(
+                    cosmic::iced::core::mouse::Event::ButtonPressed(_),
                 ) => Some(Message::Pressed(id)),
                 _ => None,
             }),
@@ -2532,7 +2532,7 @@ impl lingmo::Application for CosmicAppList {
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(lingmo::applet::style())
+        Some(cosmic::applet::style())
     }
 
     fn on_close_requested(&self, id: window::Id) -> Option<Message> {

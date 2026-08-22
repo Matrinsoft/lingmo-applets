@@ -8,8 +8,8 @@ mod wayland;
 mod wayland_subscription;
 mod window;
 
-pub fn run() -> lingmo::iced::Result {
+pub fn run() -> cosmic::iced::Result {
     localize::localize();
 
-    lingmo::applet::run::<Window>(())
+    cosmic::applet::run::<Window>(())
 }

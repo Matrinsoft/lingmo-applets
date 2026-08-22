@@ -3,7 +3,7 @@
 
 use anyhow;
 use cctk::sctk::reexports::calloop::{self, channel::SyncSender};
-use lingmo::iced::{
+use cosmic::iced::{
     self, Subscription,
     futures::{self, SinkExt, StreamExt, channel::mpsc},
     stream,
@@ -64,7 +64,7 @@ async fn start_listening(
                 State::Error
             }
         }
-        State::Error => lingmo::iced::futures::future::pending().await,
+        State::Error => cosmic::iced::futures::future::pending().await,
     }
 }
 

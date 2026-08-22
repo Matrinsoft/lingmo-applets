@@ -6,7 +6,7 @@ use crate::{
     fl,
 };
 use cctk::sctk::reexports::calloop;
-use lingmo::{
+use cosmic::{
     Element, Task, app,
     applet::{
         menu_button, padded_control,
@@ -32,13 +32,13 @@ use cosmic_settings_accessibility_subscription::{self as accessibility};
 use std::sync::LazyLock;
 use tokio::sync::mpsc::UnboundedSender;
 
-pub fn run() -> lingmo::iced::Result {
-    lingmo::applet::run::<CosmicA11yApplet>(())
+pub fn run() -> cosmic::iced::Result {
+    cosmic::applet::run::<CosmicA11yApplet>(())
 }
 
 #[derive(Clone, Default)]
 struct CosmicA11yApplet {
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     high_contrast: Option<bool>,
     reader_enabled: bool,
     magnifier_enabled: bool,
@@ -67,13 +67,13 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl lingmo::Application for CosmicA11yApplet {
+impl cosmic::Application for CosmicA11yApplet {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = "com.system76.CosmicAppletA11y";
 
-    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         (
             Self {
                 core,
@@ -85,11 +85,11 @@ impl lingmo::Application for CosmicA11yApplet {
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
@@ -133,11 +133,11 @@ impl lingmo::Application for CosmicA11yApplet {
             }
             Message::TogglePopup => {
                 if let Some(p) = self.popup.take() {
-                    return lingmo::surface::surface_task(lingmo::surface::action::destroy_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::destroy_popup(
                         p,
                     ));
                 } else {
-                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut CosmicA11yApplet| {
                             let new_id = window::Id::unique();
@@ -243,7 +243,7 @@ impl lingmo::Application for CosmicA11yApplet {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(lingmo::process::spawn(cmd));
+                    tokio::spawn(cosmic::process::spawn(cmd));
                 }
             },
             Message::DBusUpdate(update) => match update {
@@ -288,8 +288,8 @@ impl lingmo::Application for CosmicA11yApplet {
                 }
             },
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
         }
@@ -387,7 +387,7 @@ impl lingmo::Application for CosmicA11yApplet {
         Some(Message::CloseRequested(id))
     }
 
-    fn style(&self) -> Option<lingmo::iced::theme::Style> {
-        Some(lingmo::applet::style())
+    fn style(&self) -> Option<cosmic::iced::theme::Style> {
+        Some(cosmic::applet::style())
     }
 }

@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use lingmo::{
+use cosmic::{
     iced::Subscription,
     iced::{
         futures::{self, FutureExt},
@@ -85,7 +85,7 @@ pub fn notifications(proxy: NotificationsAppletProxy<'static>) -> Subscription<O
                             trace!("Waiting for notification events...");
                             let mut next_signal = signal.next();
                             let mut next_input = pin!(receiver.recv().fuse());
-                            lingmo::iced::futures::select! {
+                            cosmic::iced::futures::select! {
                                 v = next_signal => {
                                     if let Some(msg) = v {
                                         let Ok(args) = msg.args() else {

@@ -11,7 +11,7 @@ use std::{
     time::Duration,
 };
 
-use lingmo::{
+use cosmic::{
     iced::stream,
     iced::{self, Subscription},
 };

@@ -7,7 +7,7 @@ mod mouse_area;
 
 use crate::localize::localize;
 use config::{AudioAppletConfig, amplification_sink, amplification_source};
-use lingmo::{
+use cosmic::{
     Apply, Element, Renderer, Task, Theme, app,
     applet::{
         column as applet_column,
@@ -51,15 +51,15 @@ const GO_NEXT: &str = "media-skip-forward-symbolic";
 const PAUSE: &str = "media-playback-pause-symbolic";
 const PLAY: &str = "media-playback-start-symbolic";
 
-pub fn run() -> lingmo::iced::Result {
+pub fn run() -> cosmic::iced::Result {
     localize();
-    lingmo::applet::run::<Audio>(())
+    cosmic::applet::run::<Audio>(())
 }
 
 #[derive(Default)]
 pub struct Audio {
     /// For interfacing with liblingmo.
-    core: lingmo::app::Core,
+    core: cosmic::app::Core,
     /// Track the applet's popup window.
     popup: Option<window::Id>,
     /// Varlink connection to `com.system76.CosmicSettings.Audio`.
@@ -212,7 +212,7 @@ impl Audio {
                 Some(
                     button::icon(icon::from_name(GO_BACK).size(icon_size).symbolic(true))
                         .extra_small()
-                        .class(lingmo::theme::Button::AppletIcon)
+                        .class(cosmic::theme::Button::AppletIcon)
                         .on_press(Message::MprisRequest(MprisRequest::Previous))
                         .into(),
                 )
@@ -228,7 +228,7 @@ impl Audio {
                 Some(
                     button::icon(icon::from_name(GO_NEXT).size(icon_size).symbolic(true))
                         .extra_small()
-                        .class(lingmo::theme::Button::AppletIcon)
+                        .class(cosmic::theme::Button::AppletIcon)
                         .on_press(Message::MprisRequest(MprisRequest::Next))
                         .into(),
                 )
@@ -259,13 +259,13 @@ impl Audio {
     }
 }
 
-impl lingmo::Application for Audio {
+impl cosmic::Application for Audio {
     type Message = Message;
-    type Executor = lingmo::SingleThreadExecutor;
+    type Executor = cosmic::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = "com.system76.CosmicAppletAudio";
 
-    fn init(core: lingmo::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
+    fn init(core: cosmic::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
         (
             Self {
                 core,
@@ -275,16 +275,16 @@ impl lingmo::Application for Audio {
         )
     }
 
-    fn core(&self) -> &lingmo::app::Core {
+    fn core(&self) -> &cosmic::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut lingmo::app::Core {
+    fn core_mut(&mut self) -> &mut cosmic::app::Core {
         &mut self.core
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(lingmo::applet::style())
+        Some(cosmic::applet::style())
     }
 
     fn update(&mut self, message: Message) -> app::Task<Message> {
@@ -305,11 +305,11 @@ impl lingmo::Application for Audio {
             Message::Ignore => {}
             Message::TogglePopup => {
                 if let Some(p) = self.popup.take() {
-                    return lingmo::surface::surface_task(lingmo::surface::action::destroy_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::destroy_popup(
                         p,
                     ));
                 } else {
-                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
+                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Self| {
                             let new_id = window::Id::unique();
@@ -413,7 +413,7 @@ impl lingmo::Application for Audio {
                 self.model.active_sink.volume_text = volume.to_string();
                 if let Some(mut client) = self.audio_client.take() {
                     let volume = Arc::clone(&self.applied_sink_volume);
-                    return lingmo::Task::future(async move {
+                    return cosmic::Task::future(async move {
                         tokio::time::sleep(Duration::from_millis(128)).await;
                         _ = client
                             .conn
@@ -431,7 +431,7 @@ impl lingmo::Application for Audio {
                 self.model.active_source.volume_text = volume.to_string();
                 if let Some(mut client) = self.audio_client.take() {
                     let volume = Arc::clone(&self.applied_source_volume);
-                    return lingmo::Task::future(async move {
+                    return cosmic::Task::future(async move {
                         tokio::time::sleep(Duration::from_millis(128)).await;
                         _ = client
                             .conn
@@ -445,7 +445,7 @@ impl lingmo::Application for Audio {
             Message::ToggleMediaControlsInTopPanel(enabled) => {
                 self.config.show_media_controls_in_top_panel = enabled;
                 if let Ok(helper) =
-                    lingmo::cosmic_config::Config::new(Self::APP_ID, AudioAppletConfig::VERSION)
+                    cosmic::cosmic_config::Config::new(Self::APP_ID, AudioAppletConfig::VERSION)
                     && let Err(err) = self.config.write_entry(&helper)
                 {
                     tracing::error!(?err, "Error writing config");
@@ -538,12 +538,12 @@ impl lingmo::Application for Audio {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(lingmo::process::spawn(cmd));
+                    tokio::spawn(cosmic::process::spawn(cmd));
                 }
             },
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
             Message::Client(client) => {
@@ -732,7 +732,7 @@ impl lingmo::Application for Audio {
                                 .size(24)
                                 .symbolic(true),
                         )
-                        .class(lingmo::theme::Button::Icon)
+                        .class(cosmic::theme::Button::Icon)
                         .icon_size(24)
                         .line_height(24)
                         .on_press(Message::ToggleSinkMute),
@@ -751,7 +751,7 @@ impl lingmo::Application for Audio {
                                 .size(24)
                                 .symbolic(true),
                         )
-                        .class(lingmo::theme::Button::Icon)
+                        .class(cosmic::theme::Button::Icon)
                         .icon_size(24)
                         .line_height(24)
                         .on_press(Message::ToggleSourceMute),
@@ -840,7 +840,7 @@ impl lingmo::Application for Audio {
                 control_elements.push(
                     button::icon(icon::from_name(if play { PLAY } else { PAUSE }).symbolic(true))
                         .extra_small()
-                        .class(lingmo::theme::Button::AppletIcon)
+                        .class(cosmic::theme::Button::AppletIcon)
                         .on_press(if play {
                             Message::MprisRequest(MprisRequest::Play)
                         } else {
@@ -928,8 +928,8 @@ fn revealer_head(
     title: String,
     selected: String,
     toggle: Message,
-) -> lingmo::widget::Button<'static, Message> {
-    lingmo::widget::column::with_capacity(2)
+) -> cosmic::widget::Button<'static, Message> {
+    cosmic::widget::column::with_capacity(2)
         .push(text::body(title).width(Length::Fill))
         .push(text::caption(selected))
         .apply(menu_button)

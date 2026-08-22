@@ -12,7 +12,7 @@ use cctk::{
         protocol::{wl_keyboard, wl_seat},
     },
 };
-use lingmo::iced;
+use cosmic::iced;
 use futures::{SinkExt, channel::mpsc, executor::block_on};
 use std::{hash::Hash, thread};
 
