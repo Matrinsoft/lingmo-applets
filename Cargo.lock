@@ -1285,7 +1285,7 @@ dependencies = [
 
 [[package]]
 name = "cosmic-comp-config"
-version = "0.1.0"
+version = "1.0.0"
 source = "git+https://github.com/Matrinsoft/lingmo-comp.git#dd27e393e0d55959c85f37bbd3a6f2b36bc5922c"
 dependencies = [
  "cosmic-config",
