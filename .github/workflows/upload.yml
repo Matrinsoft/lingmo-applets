@@ -41,10 +41,10 @@ jobs:
             echo 'directory = "vendor"' >> .cargo/config
           fi
           grep '^source = "git+' Cargo.lock | sed 's/source = "//;s/"$//' | sort -u | while read src; do
-            echo "[source.\"$src\"]"
-            echo 'replace-with = "vendored-sources"'
-            echo ""
-          done >> .cargo/config
+            printf '[source "%s"]\n' "$src" >> .cargo/config
+            echo 'replace-with = "vendored-sources"' >> .cargo/config
+            echo '' >> .cargo/config
+          done
           tar pcf vendor.tar vendor .cargo/config
           rm -rf vendor
 
