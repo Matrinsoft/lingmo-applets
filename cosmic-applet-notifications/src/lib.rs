@@ -3,7 +3,7 @@
 
 mod localize;
 mod subscriptions;
-use cosmic::{
+use lingmo::{
     Element, Task, app,
     applet::{
         menu_control_padding, padded_control,
@@ -23,7 +23,7 @@ use cosmic::{
     widget::{Column, button, cards, container, divider, icon, scrollable, space, text, toggler},
 };
 
-use cosmic::iced::futures::executor::block_on;
+use lingmo::iced::futures::executor::block_on;
 
 use cosmic_notifications_config::NotificationsConfig;
 use cosmic_notifications_util::{ActionId, Image, Notification, markup};
@@ -32,13 +32,13 @@ use subscriptions::notifications::{self, NotificationsAppletProxy};
 use tokio::sync::mpsc::Sender;
 use tracing::info;
 
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     localize::localize();
-    cosmic::applet::run::<Notifications>(())
+    lingmo::applet::run::<Notifications>(())
 }
 
 struct Notifications {
-    core: cosmic::app::Core,
+    core: lingmo::app::Core,
     config: NotificationsConfig,
     config_helper: Option<Config>,
     icon_name: String,
@@ -81,13 +81,13 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl cosmic::Application for Notifications {
+impl lingmo::Application for Notifications {
     type Message = Message;
-    type Executor = cosmic::SingleThreadExecutor;
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = "com.system76.CosmicAppletNotifications";
 
-    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         let helper = Config::new(
             cosmic_notifications_config::ID,
             NotificationsConfig::VERSION,
@@ -122,16 +122,16 @@ impl cosmic::Application for Notifications {
         (_self, Task::none())
     }
 
-    fn core(&self) -> &cosmic::app::Core {
+    fn core(&self) -> &lingmo::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut cosmic::app::Core {
+    fn core_mut(&mut self) -> &mut lingmo::app::Core {
         &mut self.core
     }
 
-    fn style(&self) -> Option<cosmic::iced::theme::Style> {
-        Some(cosmic::applet::style())
+    fn style(&self) -> Option<lingmo::iced::theme::Style> {
+        Some(lingmo::applet::style())
     }
 
     fn subscription(&self) -> Subscription<Message> {
@@ -157,7 +157,7 @@ impl cosmic::Application for Notifications {
                 if let Some(p) = self.popup.take() {
                     return destroy_popup(p);
                 } else {
-                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
+                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Self| {
                             let new_id = window::Id::unique();
@@ -323,7 +323,7 @@ impl cosmic::Application for Notifications {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(cosmic::process::spawn(cmd));
+                    tokio::spawn(lingmo::process::spawn(cmd));
                 }
             },
             Message::ActivateNotification(id) => {
@@ -333,7 +333,7 @@ impl cosmic::Application for Notifications {
                     .iter()
                     .find_map(|list| list.1.iter().find(|n| n.id == id))
                 else {
-                    return cosmic::task::message(Message::Dismissed(id));
+                    return lingmo::task::message(Message::Dismissed(id));
                 };
                 tracing::error!("Found notification for id");
 
@@ -348,7 +348,7 @@ impl cosmic::Application for Notifications {
                 };
 
                 let Some(action) = maybe_action else {
-                    return cosmic::task::message(Message::Dismissed(id));
+                    return lingmo::task::message(Message::Dismissed(id));
                 };
                 tracing::error!("Found default action for notification");
 
@@ -367,8 +367,8 @@ impl cosmic::Application for Notifications {
                 }
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
         }
@@ -415,7 +415,7 @@ impl cosmic::Application for Notifications {
             let mut notifs: Vec<Element<_>> = Vec::with_capacity(self.cards.len());
             notifs.push(
                 container(
-                    cosmic::widget::button::text(fl!("clear-all"))
+                    lingmo::widget::button::text(fl!("clear-all"))
                         .on_press(Message::ClearAll(None)),
                 )
                 .width(Length::Fill)
@@ -444,7 +444,7 @@ impl cosmic::Application for Notifications {
                                 .symbolic(true),
                         )
                         .on_press(Message::Dismissed(n.id))
-                        .class(cosmic::theme::Button::Text);
+                        .class(lingmo::theme::Button::Text);
                         (
                             n.id,
                             Element::from(
@@ -477,15 +477,15 @@ impl cosmic::Application for Notifications {
                     info!("app_icon: {:?}", &n.app_icon);
                     if n.app_icon.is_empty() {
                         match n.image().cloned() {
-                            Some(Image::File(p)) => Some(cosmic::widget::icon::from_path(p)),
+                            Some(Image::File(p)) => Some(lingmo::widget::icon::from_path(p)),
                             Some(Image::Name(name)) => {
-                                Some(cosmic::widget::icon::from_name(name).handle())
+                                Some(lingmo::widget::icon::from_name(name).handle())
                             }
                             Some(Image::Data {
                                 width,
                                 height,
                                 data,
-                            }) => Some(cosmic::widget::icon::from_raster_pixels(
+                            }) => Some(lingmo::widget::icon::from_raster_pixels(
                                 width, height, data,
                             )),
                             None => None,
@@ -494,9 +494,9 @@ impl cosmic::Application for Notifications {
                         .ok()
                         .and_then(|u| u.to_file_path().ok())
                     {
-                        Some(cosmic::widget::icon::from_path(path))
+                        Some(lingmo::widget::icon::from_path(path))
                     } else {
-                        Some(cosmic::widget::icon::from_name(n.app_icon.as_str()).handle())
+                        Some(lingmo::widget::icon::from_name(n.app_icon.as_str()).handle())
                     }
                 });
                 let card_list = cards(
@@ -544,7 +544,7 @@ impl cosmic::Application for Notifications {
     }
 }
 
-fn text_icon(name: &str, size: u16) -> cosmic::widget::Icon {
+fn text_icon(name: &str, size: u16) -> lingmo::widget::Icon {
     icon::from_name(name).size(size).symbolic(true).icon()
 }
 

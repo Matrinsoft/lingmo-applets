@@ -26,7 +26,7 @@ const OBJECT_PATH: &str = "/CosmicStatusNotifierWatcher";
 const REFRESH_INTERVAL: Duration = Duration::from_secs(60);
 
 /// Run daemon
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     if let Err(err) = run_inner() {
         eprintln!("Zbus error running status notifier watcher: {}", err);
         std::process::exit(1);

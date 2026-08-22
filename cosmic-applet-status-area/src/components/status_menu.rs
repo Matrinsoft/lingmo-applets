@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use cosmic::{
+use lingmo::{
     Application,
     applet::{menu_button, token::subscription::TokenRequest},
     cctk::sctk::reexports::calloop,
@@ -157,7 +157,7 @@ impl State {
         &self.icon_handle
     }
 
-    pub fn popup_view(&self) -> cosmic::Element<'_, Msg> {
+    pub fn popup_view(&self) -> lingmo::Element<'_, Msg> {
         if let Some(layout) = self.layout.as_ref() {
             layout_view(layout, self.expanded)
         } else {
@@ -195,7 +195,7 @@ impl State {
     }
 }
 
-fn layout_view(layout: &Layout, expanded: Option<i32>) -> cosmic::Element<'_, Msg> {
+fn layout_view(layout: &Layout, expanded: Option<i32>) -> lingmo::Element<'_, Msg> {
     iced::widget::column(layout.children().iter().filter_map(|i| {
         if !i.visible() {
             None
@@ -219,9 +219,9 @@ fn layout_view(layout: &Layout, expanded: Option<i32>) -> cosmic::Element<'_, Ms
 
             let text = iced::widget::text(label).width(iced::Length::Fill);
 
-            let mut children: Vec<cosmic::Element<_>> = vec![text.into()];
+            let mut children: Vec<lingmo::Element<_>> = vec![text.into()];
             if is_submenu {
-                let icon = cosmic::widget::icon::from_name(if is_expanded {
+                let icon = lingmo::widget::icon::from_name(if is_expanded {
                     "go-down-symbolic"
                 } else {
                     "go-next-symbolic"
@@ -238,13 +238,13 @@ fn layout_view(layout: &Layout, expanded: Option<i32>) -> cosmic::Element<'_, Ms
                     .content_fit(iced::core::ContentFit::Contain);
                 children.insert(0, icon.into());
             } else if let Some(icon_name) = i.icon_name() {
-                let icon = cosmic::widget::icon::from_name(icon_name)
+                let icon = lingmo::widget::icon::from_name(icon_name)
                     .size(14)
                     .symbolic(true);
                 children.insert(0, icon.into());
             }
             if i.toggle_state() == Some(1) {
-                let icon = cosmic::widget::icon::from_name("emblem-ok-symbolic")
+                let icon = lingmo::widget::icon::from_name("emblem-ok-symbolic")
                     .size(14)
                     .symbolic(true);
                 children.push(icon.into());
@@ -277,7 +277,7 @@ fn layout_view(layout: &Layout, expanded: Option<i32>) -> cosmic::Element<'_, Ms
     .into()
 }
 
-fn row_button(content: Vec<cosmic::Element<Msg>>) -> cosmic::widget::Button<Msg> {
+fn row_button(content: Vec<lingmo::Element<Msg>>) -> lingmo::widget::Button<Msg> {
     menu_button(
         iced::widget::Row::with_children(content)
             .spacing(8)

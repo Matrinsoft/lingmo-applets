@@ -7,7 +7,7 @@ use cctk::{
     cosmic_protocols::keyboard_layout::v1::client::zcosmic_keyboard_layout_v1::ZcosmicKeyboardLayoutV1,
     wayland_client::{Connection, Proxy, backend::Backend},
 };
-use cosmic::{
+use lingmo::{
     app,
     app::Core,
     applet::{self},
@@ -42,7 +42,7 @@ mod wayland;
 static AUTOSIZE_MAIN_ID: LazyLock<widget::Id> = LazyLock::new(|| widget::Id::new("autosize-main"));
 pub const ID: &str = "com.system76.CosmicAppletInputSources";
 
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     let socket = std::env::var("X_PRIVILEGED_WAYLAND_SOCKET")
         .ok()
         .and_then(|fd| {
@@ -66,7 +66,7 @@ pub fn run() -> cosmic::iced::Result {
         }
     };
 
-    cosmic::applet::run::<Window>(Flags {
+    lingmo::applet::run::<Window>(Flags {
         wayland_connection,
         layouts: layouts.layout_list.layout,
     })
@@ -110,8 +110,8 @@ pub struct Flags {
     pub layouts: Vec<KeyboardLayout>,
 }
 
-impl cosmic::Application for Window {
-    type Executor = cosmic::SingleThreadExecutor;
+impl lingmo::Application for Window {
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = Flags;
     type Message = Message;
 
@@ -179,7 +179,7 @@ impl cosmic::Application for Window {
             Message::KeyboardSettings => {
                 let mut cmd = std::process::Command::new("cosmic-settings");
                 cmd.arg("keyboard");
-                tokio::spawn(cosmic::process::spawn(cmd));
+                tokio::spawn(lingmo::process::spawn(cmd));
             }
             Message::SetActiveLayout(pos) => {
                 if let Some(keyboard_layout) = &self.keyboard_layout {
@@ -190,8 +190,8 @@ impl cosmic::Application for Window {
                 }
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
             Message::Rectangle(u) => match u {
@@ -255,9 +255,9 @@ impl cosmic::Application for Window {
             widget::column::with_capacity(4 + self.active_layouts.len()).padding([8, 0]);
         for (id, layout) in self.active_layouts.iter().enumerate() {
             let font = if id == self.current_layout {
-                cosmic::font::bold()
+                lingmo::font::bold()
             } else {
-                cosmic::font::default()
+                lingmo::font::default()
             };
             let group = widget::column::with_capacity(2)
                 .push(widget::text::body(layout.description.as_str()).font(font))
@@ -314,8 +314,8 @@ impl cosmic::Application for Window {
         Subscription::batch(subscriptions)
     }
 
-    fn style(&self) -> Option<cosmic::iced::theme::Style> {
-        Some(cosmic::applet::style())
+    fn style(&self) -> Option<lingmo::iced::theme::Style> {
+        Some(lingmo::applet::style())
     }
 }
 impl Window {

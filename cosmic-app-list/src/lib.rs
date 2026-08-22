@@ -8,7 +8,7 @@ mod wayland_subscription;
 
 use localize::localize;
 
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     localize();
 
     app::run()

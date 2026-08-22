@@ -5,7 +5,7 @@
 
 use std::any::TypeId;
 
-use cosmic::iced::{self, Subscription};
+use lingmo::iced::{self, Subscription};
 use futures::{StreamExt, stream};
 
 use crate::subscriptions::status_notifier_item::StatusNotifierItem;

@@ -1,4 +1,4 @@
-﻿[workspace]
+[workspace]
 default-members = ["cosmic-applets", "cosmic-panel-button"]
 members = [
     "cosmic-app-list",
@@ -38,7 +38,7 @@ i18n-embed = { version = "0.16.0", features = [
     "desktop-requester",
 ] }
 i18n-embed-fl = "0.10"
-libcosmic = { git = "https://github.com/Matrinsoft/libcosmic", default-features = false, features = [
+liblingmo = { git = "https://github.com/Matrinsoft/liblingmo", default-features = false, features = [
     "applet",
     "applet-token",
     "dbus-config",
@@ -58,7 +58,7 @@ tracing-subscriber = { version = "0.3.22", features = ["env-filter"] }
 tracing-log = "0.2.0"
 tokio = { version = "1.49.0", features = ["full"] }
 # cosmic-config = { path = "../libcosmic/cosmic-config" }
-cosmic-config = { git = "https://github.com/Matrinsoft/libcosmic" }
+cosmic-config = { git = "https://github.com/Matrinsoft/liblingmo" }
 serde = { version = "1.0.228", features = ["derive"] }
 zlink = "0.5.0"
 
@@ -70,13 +70,13 @@ lto = "thin"
 [workspace.metadata.cargo-machete]
 ignored = ["libcosmic"]
 
-# [patch."https://github.com/Matrinsoft/libcosmic"]
+# [patch."https://github.com/Matrinsoft/liblingmo"]
 # cosmic-config = { path = "../libcosmic/cosmic-config" }
-# libcosmic = { path = "../libcosmic" }
+# liblingmo = { path = "../libcosmic" }
 # iced_futures = { path = "../libcosmic/iced/futures" }
-# cosmic-config = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
-# libcosmic = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
-# iced_futures = { git = "https://github.com/Matrinsoft/libcosmic//", branch = "theme-v2" }
+# cosmic-config = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
+# liblingmo = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
+# iced_futures = { git = "https://github.com/Matrinsoft/liblingmo//", branch = "theme-v2" }
 
 [patch."https://github.com/smithay/client-toolkit.git"]
 sctk = { package = "smithay-client-toolkit", version = "0.20.0" }

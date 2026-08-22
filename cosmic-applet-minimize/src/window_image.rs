@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use cosmic::{
+use lingmo::{
     Element,
     desktop::{IconSourceExt, fde},
     iced::Limits,
@@ -42,11 +42,11 @@ where
                             Image::new(Handle::from_rgba(img.width, img.height, img.img))
                                 .width(Length::Fixed(adjusted_width))
                                 .height(Length::Fixed(adjusted_height))
-                                .content_fit(cosmic::iced::core::ContentFit::Contain),
+                                .content_fit(lingmo::iced::core::ContentFit::Contain),
                         )
                     } else {
                         Element::from(
-                            cosmic::widget::icon(icon.as_cosmic_icon())
+                            lingmo::widget::icon(icon.as_cosmic_icon())
                                 .width(Length::Fixed((size - border * 2.0).max(0.)))
                                 .height(Length::Fixed((size - border * 2.0).max(0.))),
                         )
@@ -73,7 +73,7 @@ where
             .class(Button::AppletIcon)
             .padding(0)
             .into(),
-            icon: cosmic::widget::icon(icon.as_cosmic_icon())
+            icon: lingmo::widget::icon(icon.as_cosmic_icon())
                 .width(Length::Fixed(size / 3.0))
                 .height(Length::Fixed(size / 3.0))
                 .into(),
@@ -81,12 +81,12 @@ where
     }
 }
 
-impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> {
-    fn children(&self) -> Vec<cosmic::iced::core::widget::Tree> {
+impl<Msg> Widget<Msg, lingmo::Theme, lingmo::Renderer> for WindowImage<'_, Msg> {
+    fn children(&self) -> Vec<lingmo::iced::core::widget::Tree> {
         vec![Tree::new(&self.image_button), Tree::new(&self.icon)]
     }
 
-    fn diff(&mut self, tree: &mut cosmic::iced::core::widget::Tree) {
+    fn diff(&mut self, tree: &mut lingmo::iced::core::widget::Tree) {
         tree.diff_children(&mut [&mut self.image_button, &mut self.icon]);
     }
 
@@ -94,10 +94,10 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
         &'b mut self,
         state: &'b mut Tree,
         layout: Layout<'b>,
-        renderer: &cosmic::Renderer,
-        viewport: &cosmic::iced::core::Rectangle,
+        renderer: &lingmo::Renderer,
+        viewport: &lingmo::iced::core::Rectangle,
         translation: Vector,
-    ) -> Option<cosmic::iced::core::overlay::Element<'b, Msg, cosmic::Theme, cosmic::Renderer>>
+    ) -> Option<lingmo::iced::core::overlay::Element<'b, Msg, lingmo::Theme, lingmo::Renderer>>
     {
         let children = [&mut self.image_button, &mut self.icon]
             .into_iter()
@@ -119,10 +119,10 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
 
     fn layout(
         &mut self,
-        tree: &mut cosmic::iced::core::widget::Tree,
-        renderer: &cosmic::Renderer,
-        limits: &cosmic::iced::core::layout::Limits,
-    ) -> cosmic::iced::core::layout::Node {
+        tree: &mut lingmo::iced::core::widget::Tree,
+        renderer: &lingmo::Renderer,
+        limits: &lingmo::iced::core::layout::Limits,
+    ) -> lingmo::iced::core::layout::Node {
         let children = &mut tree.children;
         let button = &mut children[0];
         let button_node = self
@@ -156,13 +156,13 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
 
     fn draw(
         &self,
-        tree: &cosmic::iced::core::widget::Tree,
-        renderer: &mut cosmic::Renderer,
-        theme: &cosmic::Theme,
-        style: &cosmic::iced::core::renderer::Style,
-        layout: cosmic::iced::core::Layout<'_>,
-        cursor: cosmic::iced::core::mouse::Cursor,
-        viewport: &cosmic::iced::core::Rectangle,
+        tree: &lingmo::iced::core::widget::Tree,
+        renderer: &mut lingmo::Renderer,
+        theme: &lingmo::Theme,
+        style: &lingmo::iced::core::renderer::Style,
+        layout: lingmo::iced::core::Layout<'_>,
+        cursor: lingmo::iced::core::mouse::Cursor,
+        viewport: &lingmo::iced::core::Rectangle,
     ) {
         let children = &[&self.image_button, &self.icon];
         // draw children in order
@@ -178,20 +178,20 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
         self.size()
     }
 
-    fn tag(&self) -> cosmic::iced::core::widget::tree::Tag {
-        cosmic::iced::core::widget::tree::Tag::stateless()
+    fn tag(&self) -> lingmo::iced::core::widget::tree::Tag {
+        lingmo::iced::core::widget::tree::Tag::stateless()
     }
 
-    fn state(&self) -> cosmic::iced::core::widget::tree::State {
-        cosmic::iced::core::widget::tree::State::None
+    fn state(&self) -> lingmo::iced::core::widget::tree::State {
+        lingmo::iced::core::widget::tree::State::None
     }
 
     fn operate(
         &mut self,
-        tree: &mut cosmic::iced::core::widget::Tree,
-        layout: cosmic::iced::core::Layout<'_>,
-        renderer: &cosmic::Renderer,
-        operation: &mut dyn cosmic::widget::Operation<()>,
+        tree: &mut lingmo::iced::core::widget::Tree,
+        layout: lingmo::iced::core::Layout<'_>,
+        renderer: &lingmo::Renderer,
+        operation: &mut dyn lingmo::widget::Operation<()>,
     ) {
         let layout = layout.children().collect::<Vec<_>>();
         let children = [&mut self.image_button, &mut self.icon];
@@ -210,14 +210,14 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
 
     fn update(
         &mut self,
-        state: &mut cosmic::iced::core::widget::Tree,
-        event: &cosmic::iced::core::Event,
-        layout: cosmic::iced::core::Layout<'_>,
-        cursor: cosmic::iced::core::mouse::Cursor,
-        renderer: &cosmic::Renderer,
-        clipboard: &mut dyn cosmic::iced::core::Clipboard,
-        shell: &mut cosmic::iced::core::Shell<'_, Msg>,
-        viewport: &cosmic::iced::core::Rectangle,
+        state: &mut lingmo::iced::core::widget::Tree,
+        event: &lingmo::iced::core::Event,
+        layout: lingmo::iced::core::Layout<'_>,
+        cursor: lingmo::iced::core::mouse::Cursor,
+        renderer: &lingmo::Renderer,
+        clipboard: &mut dyn lingmo::iced::core::Clipboard,
+        shell: &mut lingmo::iced::core::Shell<'_, Msg>,
+        viewport: &lingmo::iced::core::Rectangle,
     ) {
         let children = [&mut self.image_button, &mut self.icon];
 
@@ -242,12 +242,12 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
 
     fn mouse_interaction(
         &self,
-        state: &cosmic::iced::core::widget::Tree,
-        layout: cosmic::iced::core::Layout<'_>,
-        cursor: cosmic::iced::core::mouse::Cursor,
-        viewport: &cosmic::iced::core::Rectangle,
-        renderer: &cosmic::Renderer,
-    ) -> cosmic::iced::core::mouse::Interaction {
+        state: &lingmo::iced::core::widget::Tree,
+        layout: lingmo::iced::core::Layout<'_>,
+        cursor: lingmo::iced::core::mouse::Cursor,
+        viewport: &lingmo::iced::core::Rectangle,
+        renderer: &lingmo::Renderer,
+    ) -> lingmo::iced::core::mouse::Interaction {
         let children = [&self.image_button, &self.icon];
         let layout = layout.children().collect::<Vec<_>>();
         for (i, (layout, child)) in layout
@@ -264,21 +264,21 @@ impl<Msg> Widget<Msg, cosmic::Theme, cosmic::Renderer> for WindowImage<'_, Msg> 
                 return interaction;
             }
         }
-        cosmic::iced::core::mouse::Interaction::Idle
+        lingmo::iced::core::mouse::Interaction::Idle
     }
 
-    fn id(&self) -> Option<cosmic::widget::Id> {
+    fn id(&self) -> Option<lingmo::widget::Id> {
         None
     }
 
-    fn set_id(&mut self, _id: cosmic::widget::Id) {}
+    fn set_id(&mut self, _id: lingmo::widget::Id) {}
 }
 
-impl<'a, Message> From<WindowImage<'a, Message>> for cosmic::Element<'a, Message>
+impl<'a, Message> From<WindowImage<'a, Message>> for lingmo::Element<'a, Message>
 where
     Message: 'static + Clone,
 {
-    fn from(w: WindowImage<'a, Message>) -> cosmic::Element<'a, Message> {
+    fn from(w: WindowImage<'a, Message>) -> lingmo::Element<'a, Message> {
         Element::new(w)
     }
 }

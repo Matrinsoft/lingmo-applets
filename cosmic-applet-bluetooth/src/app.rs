@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use crate::bluetooth::{BluerDeviceStatus, BluerRequest, BluerState, set_discovery, set_tick};
-use cosmic::{
+use lingmo::{
     app,
     applet::token::subscription::{TokenRequest, TokenUpdate, activation_token_subscription},
     cctk::sctk::reexports::calloop,
@@ -10,7 +10,7 @@ use cosmic::{
     widget::toggler,
 };
 
-use cosmic::{
+use lingmo::{
     Element, Task,
     applet::{menu_button, padded_control},
     cosmic_theme::Spacing,
@@ -33,13 +33,13 @@ use crate::{
 };
 
 #[inline]
-pub fn run() -> cosmic::iced::Result {
-    cosmic::applet::run::<CosmicBluetoothApplet>(())
+pub fn run() -> lingmo::iced::Result {
+    lingmo::applet::run::<CosmicBluetoothApplet>(())
 }
 
 #[derive(Default)]
 struct CosmicBluetoothApplet {
-    core: cosmic::app::Core,
+    core: lingmo::app::Core,
     icon_name: String,
     popup: Option<window::Id>,
     bluer_state: BluerState,
@@ -78,13 +78,13 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl cosmic::Application for CosmicBluetoothApplet {
+impl lingmo::Application for CosmicBluetoothApplet {
     type Message = Message;
-    type Executor = cosmic::SingleThreadExecutor;
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = config::APP_ID;
 
-    fn init(core: cosmic::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
+    fn init(core: lingmo::app::Core, _flags: Self::Flags) -> (Self, app::Task<Self::Message>) {
         (
             Self {
                 core,
@@ -96,11 +96,11 @@ impl cosmic::Application for CosmicBluetoothApplet {
         )
     }
 
-    fn core(&self) -> &cosmic::app::Core {
+    fn core(&self) -> &lingmo::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut cosmic::app::Core {
+    fn core_mut(&mut self) -> &mut lingmo::app::Core {
         &mut self.core
     }
 
@@ -112,16 +112,16 @@ impl cosmic::Application for CosmicBluetoothApplet {
 
                     return Task::batch([
                         destroy_popup(p),
-                        cosmic::task::future(
+                        lingmo::task::future(
                             set_tick(Duration::from_secs(10))
-                                .map(|()| cosmic::Action::App(Message::Ignore)),
+                                .map(|()| lingmo::Action::App(Message::Ignore)),
                         ),
                     ]);
                 } else {
                     set_discovery(true);
 
                     let get_popup_task =
-                        cosmic::surface::surface_task(cosmic::surface::action::app_popup(
+                        lingmo::surface::surface_task(lingmo::surface::action::app_popup(
                             |_| Default::default(),
                             move |app: &mut Self| {
                                 let new_id = window::Id::unique();
@@ -139,8 +139,8 @@ impl cosmic::Application for CosmicBluetoothApplet {
 
                     return Task::batch([
                         get_popup_task,
-                        cosmic::task::future(set_tick(Duration::from_secs(3)))
-                            .map(|()| cosmic::Action::App(Message::Ignore)),
+                        lingmo::task::future(set_tick(Duration::from_secs(3)))
+                            .map(|()| lingmo::Action::App(Message::Ignore)),
                     ]);
                 }
             }
@@ -260,9 +260,9 @@ impl cosmic::Application for CosmicBluetoothApplet {
                     self.popup = None;
                     set_discovery(false);
                 }
-                return cosmic::task::future(
+                return lingmo::task::future(
                     set_tick(Duration::from_secs(10))
-                        .map(|()| cosmic::Action::App(Message::Ignore)),
+                        .map(|()| lingmo::Action::App(Message::Ignore)),
                 );
             }
             Message::OpenSettings => {
@@ -288,7 +288,7 @@ impl cosmic::Application for CosmicBluetoothApplet {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(cosmic::process::spawn(cmd));
+                    tokio::spawn(lingmo::process::spawn(cmd));
                 }
             },
             Message::ToggleBluetooth(enabled) => {
@@ -303,8 +303,8 @@ impl cosmic::Application for CosmicBluetoothApplet {
                 }
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
         }
@@ -535,7 +535,7 @@ impl cosmic::Application for CosmicBluetoothApplet {
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(cosmic::applet::style())
+        Some(lingmo::applet::style())
     }
 
     fn on_close_requested(&self, id: window::Id) -> Option<Message> {

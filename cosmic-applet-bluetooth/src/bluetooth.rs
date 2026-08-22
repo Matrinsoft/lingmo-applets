@@ -18,7 +18,7 @@ use bluer::{
     agent::{Agent, AgentHandle},
 };
 
-use cosmic::{
+use lingmo::{
     iced::stream,
     iced::{
         self, Subscription,

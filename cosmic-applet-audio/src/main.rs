@@ -3,7 +3,7 @@
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-pub fn main() -> cosmic::iced::Result {
+pub fn main() -> lingmo::iced::Result {
     tracing_subscriber::fmt::init();
     let _ = tracing_log::LogTracer::init();
 

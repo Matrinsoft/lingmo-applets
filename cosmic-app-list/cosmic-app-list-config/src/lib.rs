@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use cosmic::cosmic_config::{
+use lingmo::cosmic_config::{
     self, Config, CosmicConfigEntry, cosmic_config_derive::CosmicConfigEntry,
 };
 use serde::{Deserialize, Serialize};

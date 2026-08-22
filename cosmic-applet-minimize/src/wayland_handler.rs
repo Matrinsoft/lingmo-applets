@@ -22,7 +22,7 @@ use cctk::{
     toplevel_management::{ToplevelManagerHandler, ToplevelManagerState},
     wayland_client::{self, WEnum, delegate_noop, protocol::wl_seat::WlSeat},
 };
-use cosmic::{
+use lingmo::{
     cctk::{
         self,
         cosmic_protocols::{

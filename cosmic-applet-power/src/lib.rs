@@ -1,7 +1,7 @@
 // Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-use cosmic::{
+use lingmo::{
     Element, Task, app,
     applet::{
         menu_button, padded_control,
@@ -35,17 +35,17 @@ pub mod session_manager;
 
 use crate::{cosmic_session::CosmicSessionProxy, session_manager::SessionManagerProxy};
 
-static SUBSURFACE_ID: LazyLock<cosmic::widget::Id> =
-    LazyLock::new(|| cosmic::widget::Id::new("subsurface"));
+static SUBSURFACE_ID: LazyLock<lingmo::widget::Id> =
+    LazyLock::new(|| lingmo::widget::Id::new("subsurface"));
 
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     localize::localize();
 
-    cosmic::applet::run::<Power>(())
+    lingmo::applet::run::<Power>(())
 }
 
 struct Power {
-    core: cosmic::app::Core,
+    core: lingmo::app::Core,
     icon_name: String,
     popup: Option<window::Id>,
     token_tx: Option<calloop::channel::Sender<TokenRequest>>,
@@ -62,8 +62,8 @@ enum PowerAction {
 }
 
 impl PowerAction {
-    fn perform(self) -> iced::Task<cosmic::Action<Message>> {
-        let msg = |m| cosmic::action::app(Message::Zbus(m));
+    fn perform(self) -> iced::Task<lingmo::Action<Message>> {
+        let msg = |m| lingmo::action::app(Message::Zbus(m));
         match self {
             PowerAction::Lock => iced::Task::perform(lock(), msg),
             PowerAction::LogOut => iced::Task::perform(log_out(), msg),
@@ -85,21 +85,21 @@ enum Message {
     Surface(surface::Action),
 }
 
-impl cosmic::Application for Power {
-    type Executor = cosmic::SingleThreadExecutor;
+impl lingmo::Application for Power {
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = ();
     type Message = Message;
     const APP_ID: &'static str = "com.system76.CosmicAppletPower";
 
-    fn core(&self) -> &cosmic::app::Core {
+    fn core(&self) -> &lingmo::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut cosmic::app::Core {
+    fn core_mut(&mut self) -> &mut lingmo::app::Core {
         &mut self.core
     }
 
-    fn init(core: cosmic::app::Core, _flags: ()) -> (Self, app::Task<Self::Message>) {
+    fn init(core: lingmo::app::Core, _flags: ()) -> (Self, app::Task<Self::Message>) {
         (
             Self {
                 core,
@@ -120,11 +120,11 @@ impl cosmic::Application for Power {
         match message {
             Message::TogglePopup => {
                 if let Some(p) = self.popup.take() {
-                    return cosmic::surface::surface_task(cosmic::surface::action::destroy_popup(
+                    return lingmo::surface::surface_task(lingmo::surface::action::destroy_popup(
                         p,
                     ));
                 } else {
-                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
+                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Power| {
                             let new_id = window::Id::unique();
@@ -198,12 +198,12 @@ impl cosmic::Application for Power {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(cosmic::process::spawn(cmd));
+                    tokio::spawn(lingmo::process::spawn(cmd));
                 }
             },
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
         }
@@ -293,7 +293,7 @@ impl cosmic::Application for Power {
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(cosmic::applet::style())
+        Some(lingmo::applet::style())
     }
 }
 
@@ -309,7 +309,7 @@ fn power_buttons(name: &str, on_press: Message) -> button::Button<'_, Message> {
     .class(theme::Button::Text)
 }
 
-fn text_icon(name: &str, size: u16) -> cosmic::widget::Icon {
+fn text_icon(name: &str, size: u16) -> lingmo::widget::Icon {
     icon::from_name(name).size(size).symbolic(true).icon()
 }
 

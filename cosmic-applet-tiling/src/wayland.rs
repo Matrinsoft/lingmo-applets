@@ -17,7 +17,7 @@ use cctk::{
     wayland_protocols::ext::foreign_toplevel_list::v1::client::ext_foreign_toplevel_handle_v1::ExtForeignToplevelHandleV1,
     workspace::{WorkspaceHandler, WorkspaceState},
 };
-use cosmic::iced::futures;
+use lingmo::iced::futures;
 use cosmic_protocols::workspace::v2::client::zcosmic_workspace_handle_v2::TilingState;
 use futures::{SinkExt, channel::mpsc, executor::block_on};
 use rustc_hash::FxHashSet;

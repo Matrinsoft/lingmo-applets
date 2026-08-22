@@ -5,7 +5,7 @@ use crate::{
     fl, wayland::AppRequest, wayland_subscription, wayland_subscription::WorkspacesUpdate,
 };
 use cctk::sctk::reexports::calloop::channel::SyncSender;
-use cosmic::{
+use lingmo::{
     Element, Task,
     app::{self, Core},
     applet::{menu_button, padded_control},
@@ -58,8 +58,8 @@ pub enum Message {
     Surface(surface::Action),
 }
 
-impl cosmic::Application for Window {
-    type Executor = cosmic::SingleThreadExecutor;
+impl lingmo::Application for Window {
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = ();
     type Message = Message;
     const APP_ID: &'static str = ID;
@@ -146,7 +146,7 @@ impl cosmic::Application for Window {
                 return if let Some(p) = self.popup.take() {
                     destroy_popup(p)
                 } else {
-                    return cosmic::surface::surface_task(cosmic::surface::action::app_popup(
+                    return lingmo::surface::surface_task(lingmo::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut Self| {
                             let new_id = Id::unique();
@@ -231,11 +231,11 @@ impl cosmic::Application for Window {
             Message::OpenSettings => {
                 let mut cmd = std::process::Command::new("cosmic-settings");
                 cmd.arg("window-management");
-                tokio::spawn(cosmic::process::spawn(cmd));
+                tokio::spawn(lingmo::process::spawn(cmd));
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
         }
@@ -312,7 +312,7 @@ impl cosmic::Application for Window {
         self.core.applet.popup_container(content_list).into()
     }
 
-    fn style(&self) -> Option<cosmic::iced::theme::Style> {
-        Some(cosmic::applet::style())
+    fn style(&self) -> Option<lingmo::iced::theme::Style> {
+        Some(lingmo::applet::style())
     }
 }

@@ -11,7 +11,7 @@ use cctk::{
         workspace::v1::client::ext_workspace_handle_v1::ExtWorkspaceHandleV1,
     },
 };
-use cosmic::{
+use lingmo::{
     iced::core::Bytes,
     iced::{self, Subscription, stream},
 };

@@ -9,7 +9,7 @@ mod localize;
 use crate::localize::localize;
 
 #[inline]
-pub fn run() -> cosmic::iced::Result {
+pub fn run() -> lingmo::iced::Result {
     localize();
     app::run()
 }

@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use config::{CosmicPanelButtonConfig, IndividualConfig, Override};
-use cosmic::desktop::fde::{self, DesktopEntry, get_languages_from_env};
-use cosmic::widget::space;
-use cosmic::{
+use lingmo::desktop::fde::{self, DesktopEntry, get_languages_from_env};
+use lingmo::widget::space;
+use lingmo::{
     Task, app,
     applet::{
         Size,
@@ -30,7 +30,7 @@ struct Desktop {
 }
 
 struct Button {
-    core: cosmic::app::Core,
+    core: lingmo::app::Core,
     desktop: Desktop,
     config: IndividualConfig,
 }
@@ -45,9 +45,9 @@ enum Msg {
 impl Button {
     pub fn icon_button_from_handle<'a, Message: Clone + 'static>(
         &self,
-        icon: cosmic::widget::icon::Handle,
-    ) -> cosmic::widget::Button<'a, Message> {
-        let theme = cosmic::theme::active();
+        icon: lingmo::widget::icon::Handle,
+    ) -> lingmo::widget::Button<'a, Message> {
+        let theme = lingmo::theme::active();
         let theme = theme.cosmic();
 
         let suggested = self.core.applet.suggested_size(icon.symbolic);
@@ -60,17 +60,17 @@ impl Button {
         };
         let symbolic = icon.symbolic;
 
-        cosmic::widget::button::custom(
-            cosmic::widget::layer_container(
-                cosmic::widget::icon(icon)
+        lingmo::widget::button::custom(
+            lingmo::widget::layer_container(
+                lingmo::widget::icon(icon)
                     .class(if symbolic {
-                        cosmic::theme::Svg::Custom(std::rc::Rc::new(|theme| {
-                            cosmic::iced::widget::svg::Style {
+                        lingmo::theme::Svg::Custom(std::rc::Rc::new(|theme| {
+                            lingmo::iced::widget::svg::Style {
                                 color: Some(theme.cosmic().background(theme.transparent).on.into()),
                             }
                         }))
                     } else {
-                        cosmic::theme::Svg::default()
+                        lingmo::theme::Svg::default()
                     })
                     .width(Length::Fixed(suggested.0 as f32))
                     .height(Length::Fixed(suggested.1 as f32)),
@@ -79,17 +79,17 @@ impl Button {
         )
         .width(Length::Fixed((suggested.0 + 2 * horizontal_padding) as f32))
         .height(Length::Fixed((suggested.1 + 2 * vertical_padding) as f32))
-        .class(cosmic::theme::Button::AppletIcon)
+        .class(lingmo::theme::Button::AppletIcon)
     }
 }
 
-impl cosmic::Application for Button {
+impl lingmo::Application for Button {
     type Message = Msg;
-    type Executor = cosmic::SingleThreadExecutor;
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = Desktop;
     const APP_ID: &'static str = "com.system76.CosmicPanelButton";
 
-    fn init(core: cosmic::app::Core, desktop: Desktop) -> (Self, app::Task<Msg>) {
+    fn init(core: lingmo::app::Core, desktop: Desktop) -> (Self, app::Task<Msg>) {
         let config = Config::new(Self::APP_ID, CosmicPanelButtonConfig::VERSION)
             .ok()
             .and_then(|c| CosmicPanelButtonConfig::get_entry(&c).ok())
@@ -108,16 +108,16 @@ impl cosmic::Application for Button {
         )
     }
 
-    fn core(&self) -> &cosmic::app::Core {
+    fn core(&self) -> &lingmo::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut cosmic::app::Core {
+    fn core_mut(&mut self) -> &mut lingmo::app::Core {
         &mut self.core
     }
 
     fn style(&self) -> Option<iced::theme::Style> {
-        Some(cosmic::applet::style())
+        Some(lingmo::applet::style())
     }
 
     fn update(&mut self, message: Msg) -> app::Task<Msg> {
@@ -141,15 +141,15 @@ impl cosmic::Application for Button {
                     .unwrap_or_default();
             }
             Msg::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
         }
         Task::none()
     }
 
-    fn view(&self) -> cosmic::Element<'_, Msg> {
+    fn view(&self) -> lingmo::Element<'_, Msg> {
         // currently, panel being anchored to the left or right is a hard
         // override for icon, later if text is updated to wrap, we may
         // use Override::Text to override this behavior
@@ -168,10 +168,10 @@ impl cosmic::Application for Button {
                     )
                 )
             {
-                cosmic::Element::from(
+                lingmo::Element::from(
                     self.core.applet.applet_tooltip::<Msg>(
                         self.icon_button_from_handle(
-                            cosmic::widget::icon::from_name(self.desktop.icon.clone().unwrap())
+                            lingmo::widget::icon::from_name(self.desktop.icon.clone().unwrap())
                                 .handle(),
                         )
                         .on_press_down(Msg::Press),
@@ -191,9 +191,9 @@ impl cosmic::Application for Button {
                     ))
                 )
                 .align_y(iced::Alignment::Center);
-                cosmic::widget::button::custom(content)
+                lingmo::widget::button::custom(content)
                     .padding([0, self.core.applet.suggested_padding(true).0])
-                    .class(cosmic::theme::Button::AppletIcon)
+                    .class(lingmo::theme::Button::AppletIcon)
                     .on_press_down(Msg::Press)
                     .into()
             },
@@ -242,5 +242,5 @@ pub fn run() -> iced::Result {
     let desktop = desktop.unwrap_or_else(|| {
         panic!("Failed to find valid desktop file '{filename}' in search paths")
     });
-    cosmic::applet::run::<Button>(desktop)
+    lingmo::applet::run::<Button>(desktop)
 }

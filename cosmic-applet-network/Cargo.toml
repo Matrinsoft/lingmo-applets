@@ -10,7 +10,7 @@ futures.workspace = true
 futures-util.workspace = true
 i18n-embed-fl.workspace = true
 i18n-embed.workspace = true
-libcosmic = { workspace = true, features = [
+liblingmo = { workspace = true, features = [
     "applet",
     "applet-token",
     "tokio",

@@ -14,7 +14,7 @@ use std::{
     sync::{Arc, LazyLock},
 };
 
-use cosmic::{
+use lingmo::{
     Element, Task, app,
     applet::{
         menu_button, menu_control_padding, padded_control,
@@ -43,8 +43,8 @@ use futures::{
 
 use crate::{config, fl};
 
-pub fn run() -> cosmic::iced::Result {
-    cosmic::applet::run::<CosmicNetworkApplet>(())
+pub fn run() -> lingmo::iced::Result {
+    lingmo::applet::run::<CosmicNetworkApplet>(())
 }
 
 #[derive(Debug, Clone)]
@@ -316,7 +316,7 @@ pub enum AgentSetting {
 
 #[derive(Default)]
 struct CosmicNetworkApplet {
-    core: cosmic::app::Core,
+    core: lingmo::app::Core,
     icon_name: String,
     popup: Option<window::Id>,
 
@@ -353,8 +353,8 @@ fn vpn_section<'a>(
     show_available_vpns: bool,
     space_xxs: u16,
     space_s: u16,
-) -> cosmic::iced::widget::Column<'a, Message, cosmic::Theme> {
-    let mut vpn_col = cosmic::widget::column::with_capacity::<'_, Message, cosmic::Theme, _>(4);
+) -> lingmo::iced::widget::Column<'a, Message, lingmo::Theme> {
+    let mut vpn_col = lingmo::widget::column::with_capacity::<'_, Message, lingmo::Theme, _>(4);
 
     if !nm_state.known_vpns.is_empty() {
         let dropdown_icon = if show_available_vpns {
@@ -530,8 +530,8 @@ fn connect_access_point_task(
     access_point: AccessPoint,
     identity: Option<String>,
     password: Option<SecureString>,
-) -> Task<cosmic::Action<Message>> {
-    cosmic::task::future(async move {
+) -> Task<lingmo::Action<Message>> {
+    lingmo::task::future(async move {
         let ssid = access_point.ssid.to_string();
         let interface = access_point.interface.clone();
         let bssid = access_point.hw_address.as_string();
@@ -557,11 +557,11 @@ fn connect_access_point_task(
             Err(e) => Message::Error(format!("nmrs init: {e}")),
         }
     })
-    .map(cosmic::Action::App)
+    .map(lingmo::Action::App)
 }
 
 fn snapshot_task() -> Task<Message> {
-    cosmic::task::future(async move {
+    lingmo::task::future(async move {
         let nm = match NmrsManager::new().await {
             Ok(nm) => nm,
             Err(e) => return Message::Error(format!("nmrs init: {e}")),
@@ -575,7 +575,7 @@ fn snapshot_task() -> Task<Message> {
 }
 
 fn network_events_task() -> Task<Message> {
-    cosmic::Task::stream(async_fn_stream::fn_stream(|emitter| async move {
+    lingmo::Task::stream(async_fn_stream::fn_stream(|emitter| async move {
         let nm = match NmrsManager::new().await {
             Ok(nm) => nm,
             Err(e) => {
@@ -781,7 +781,7 @@ impl CosmicNetworkApplet {
                     .as_deref()
                     .unwrap_or("http://204.pop-os.org/"),
             );
-            tokio::spawn(cosmic::process::spawn(browser));
+            tokio::spawn(lingmo::process::spawn(browser));
         }
     }
 
@@ -896,7 +896,7 @@ impl CosmicNetworkApplet {
 
     fn view_window_return<'a>(
         &self,
-        mut content: cosmic::iced::widget::Column<'a, Message, cosmic::Theme>,
+        mut content: lingmo::iced::widget::Column<'a, Message, lingmo::Theme>,
     ) -> Element<'a, Message> {
         let Spacing {
             space_xxs, space_s, ..
@@ -912,8 +912,8 @@ impl CosmicNetworkApplet {
             .into()
     }
 
-    fn connect_vpn(&mut self, uuid: Arc<str>) -> Task<cosmic::Action<Message>> {
-        cosmic::task::future(async move {
+    fn connect_vpn(&mut self, uuid: Arc<str>) -> Task<lingmo::Action<Message>> {
+        lingmo::task::future(async move {
             let error = match NmrsManager::new().await {
                 Ok(nm) => nm
                     .connect_vpn_by_uuid(&uuid)
@@ -928,7 +928,7 @@ impl CosmicNetworkApplet {
                 error,
             }
         })
-        .map(cosmic::Action::App)
+        .map(lingmo::Action::App)
     }
 }
 
@@ -938,7 +938,7 @@ fn secret_agent_task(
     identifier: String,
     mut reregister_requests: UnboundedReceiver<()>,
 ) -> Task<NmAgentEvent> {
-    cosmic::Task::stream(async_fn_stream::fn_stream(move |emitter| async move {
+    lingmo::Task::stream(async_fn_stream::fn_stream(move |emitter| async move {
         let registration = SecretAgent::builder()
             .with_identifier(identifier)
             .with_object_path("/org/freedesktop/NetworkManager/SecretAgent")
@@ -1004,8 +1004,8 @@ fn secret_request_to_event(req: SecretRequest) -> NmAgentEvent {
 /// Reply with [`NoSecrets`](nmrs::agent::SecretResponder::no_secrets) to free
 /// NetworkManager when the applet decides not to use the responder. Dropping
 /// it would also auto-reply, but doing it explicitly keeps the log clean.
-fn release_responder(responder: SecretResponderHandle) -> Task<cosmic::Action<Message>> {
-    cosmic::task::future(async move {
+fn release_responder(responder: SecretResponderHandle) -> Task<lingmo::Action<Message>> {
+    lingmo::task::future(async move {
         if let Some(r) = responder.lock().await.take() {
             let _ = r.no_secrets().await;
         }
@@ -1027,7 +1027,7 @@ pub(crate) enum Message {
     TogglePasswordVisibility,
     FocusSecureInput,
     NoOp,
-    #[allow(dead_code)] // required by `cosmic::applet` surface path; not always emitted
+    #[allow(dead_code)] // required by `lingmo::applet` surface path; not always emitted
     Surface(surface::Action),
     ActivateVpn(Arc<str>),   // UUID of VPN to activate
     DeactivateVpn(Arc<str>), // UUID of VPN to deactivate
@@ -1072,13 +1072,13 @@ pub(crate) enum Message {
     SelectDevice(Option<Arc<DeviceInfo>>),
 }
 
-impl cosmic::Application for CosmicNetworkApplet {
+impl lingmo::Application for CosmicNetworkApplet {
     type Message = Message;
-    type Executor = cosmic::SingleThreadExecutor;
+    type Executor = lingmo::SingleThreadExecutor;
     type Flags = ();
     const APP_ID: &'static str = config::APP_ID;
 
-    fn init(core: cosmic::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
+    fn init(core: lingmo::app::Core, _flags: ()) -> (Self, app::Task<Message>) {
         let applet = Self {
             core,
             icon_name: "network-wired-disconnected-symbolic".to_string(),
@@ -1101,15 +1101,15 @@ impl cosmic::Application for CosmicNetworkApplet {
                 network_events_task(),
                 secret_agent_task(my_id, secret_agent_reregister_rx).map(Message::SecretAgent),
             ])
-            .map(cosmic::Action::App),
+            .map(lingmo::Action::App),
         )
     }
 
-    fn core(&self) -> &cosmic::app::Core {
+    fn core(&self) -> &lingmo::app::Core {
         &self.core
     }
 
-    fn core_mut(&mut self) -> &mut cosmic::app::Core {
+    fn core_mut(&mut self) -> &mut lingmo::app::Core {
         &mut self.core
     }
 
@@ -1121,9 +1121,9 @@ impl cosmic::Application for CosmicNetworkApplet {
                     return destroy_popup(p);
                 } else {
                     let mut tasks = Vec::with_capacity(2);
-                    tasks.push(snapshot_task().map(cosmic::Action::App));
-                    tasks.push(cosmic::surface::surface_task(
-                        cosmic::surface::action::app_popup(
+                    tasks.push(snapshot_task().map(lingmo::Action::App));
+                    tasks.push(lingmo::surface::surface_task(
+                        lingmo::surface::action::app_popup(
                             |_| Default::default(),
                             |app: &mut Self| {
                                 let new_id = window::Id::unique();
@@ -1148,7 +1148,7 @@ impl cosmic::Application for CosmicNetworkApplet {
             Message::ToggleAirplaneMode(enabled) => {
                 self.toggle_wifi_ctr += 1;
                 self.nm_state.nm_state.airplane_mode = enabled;
-                return cosmic::task::future(async move {
+                return lingmo::task::future(async move {
                     match NmrsManager::new().await {
                         Ok(nm) => match nm.set_airplane_mode(enabled).await {
                             Ok(()) => Message::Refresh,
@@ -1160,7 +1160,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         Err(e) => Message::Error(format!("nmrs init: {e}")),
                     }
                 })
-                .map(cosmic::Action::App);
+                .map(lingmo::Action::App);
             }
             Message::SelectWirelessAccessPoint(access_point) => {
                 if matches!(access_point.network_type, NetworkType::Open) {
@@ -1185,7 +1185,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         password: String::new().into(),
                         password_hidden: true,
                     });
-                    return cosmic::task::message(cosmic::Action::App(Message::FocusSecureInput));
+                    return lingmo::task::message(lingmo::Action::App(Message::FocusSecureInput));
                 }
             }
             Message::ToggleVisibleNetworks => {
@@ -1202,7 +1202,7 @@ impl cosmic::Application for CosmicNetworkApplet {
             }
             Message::FocusSecureInput => {
                 return text_input::focus(SECURE_INPUT_WIFI.clone())
-                    .map(|_: ()| cosmic::Action::App(Message::NoOp));
+                    .map(|_: ()| lingmo::Action::App(Message::NoOp));
             }
             Message::NoOp => {}
             Message::CancelNewConnection => {
@@ -1236,7 +1236,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         cmd.env("XDG_ACTIVATION_TOKEN", &token);
                         cmd.env("DESKTOP_STARTUP_ID", &token);
                     }
-                    tokio::spawn(cosmic::process::spawn(cmd));
+                    tokio::spawn(lingmo::process::spawn(cmd));
                 }
             },
             Message::SelectDevice(device) => {
@@ -1277,7 +1277,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                 };
                 self.show_visible_networks = true;
                 let ssid_for_task = ssid.clone();
-                let forget_task = cosmic::task::future(async move {
+                let forget_task = lingmo::task::future(async move {
                     match NmrsManager::new().await {
                         Ok(nm) => match nm.forget(&ssid_for_task).await {
                             Ok(()) => Message::Refresh,
@@ -1289,13 +1289,13 @@ impl cosmic::Application for CosmicNetworkApplet {
                         Err(e) => Message::Error(format!("nmrs init: {e}")),
                     }
                 })
-                .map(cosmic::Action::App);
+                .map(lingmo::Action::App);
                 let reconnect_task = connect_access_point_task(ap, None, None);
                 return Task::batch(vec![forget_task, reconnect_task]);
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
             Message::ActivateVpn(uuid) => {
@@ -1305,7 +1305,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                 });
                 self.update_icon_name();
                 return Task::batch(vec![
-                    snapshot_task().map(cosmic::Action::App),
+                    snapshot_task().map(lingmo::Action::App),
                     self.connect_vpn(uuid.clone()),
                 ]);
             }
@@ -1315,7 +1315,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                     action: PendingVpnAction::Deactivate,
                 });
                 self.update_icon_name();
-                let disconnect_task = cosmic::task::future(async move {
+                let disconnect_task = lingmo::task::future(async move {
                     let error = match NmrsManager::new().await {
                         Ok(nm) => nm
                             .disconnect_vpn_by_uuid(&uuid)
@@ -1330,9 +1330,9 @@ impl cosmic::Application for CosmicNetworkApplet {
                         error,
                     }
                 })
-                .map(cosmic::Action::App);
+                .map(lingmo::Action::App);
                 return Task::batch(vec![
-                    snapshot_task().map(cosmic::Action::App),
+                    snapshot_task().map(lingmo::Action::App),
                     disconnect_task,
                 ]);
             }
@@ -1350,7 +1350,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                 if let Some(error) = error {
                     tracing::error!("{error}");
                 }
-                return snapshot_task().map(cosmic::Action::App);
+                return snapshot_task().map(lingmo::Action::App);
             }
             Message::ToggleVpnList => {
                 self.show_available_vpns = !self.show_available_vpns;
@@ -1403,7 +1403,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                 {
                     *state = ActiveConnectionState::Deactivating;
                 }
-                return cosmic::task::future(async move {
+                return lingmo::task::future(async move {
                     match NmrsManager::new().await {
                         Ok(nm) => match nm.disconnect(interface.as_deref()).await {
                             Ok(()) => Message::Refresh,
@@ -1412,7 +1412,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         Err(e) => Message::Error(format!("nmrs init: {e}")),
                     }
                 })
-                .map(cosmic::Action::App);
+                .map(lingmo::Action::App);
             }
             Message::Error(error) => {
                 tracing::error!("error: {error:?}")
@@ -1440,7 +1440,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                     self.failed_known_ssids.insert(access_point.ssid.clone());
                     self.new_connection = Some(NewConnectionState::Failure(access_point));
                 }
-                return snapshot_task().map(cosmic::Action::App);
+                return snapshot_task().map(lingmo::Action::App);
             }
             Message::NetworkEvent(event) => {
                 if matches!(event, NetworkEvent::NetworkManagerRestarted) {
@@ -1454,7 +1454,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         }
                     }
                 }
-                return snapshot_task().map(cosmic::Action::App);
+                return snapshot_task().map(lingmo::Action::App);
             }
             Message::PasswordUpdate(entered_pw) => {
                 if let Some(NewConnectionState::EnterPassword { password, .. }) =
@@ -1468,7 +1468,7 @@ impl cosmic::Application for CosmicNetworkApplet {
             }
             Message::WiFiEnable(enable) => {
                 self.nm_state.nm_state.wifi_enabled = enable;
-                return cosmic::task::future(async move {
+                return lingmo::task::future(async move {
                     match NmrsManager::new().await {
                         Ok(nm) => match nm.set_wireless_enabled(enable).await {
                             Ok(()) => Message::Refresh,
@@ -1477,7 +1477,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         Err(e) => Message::Error(format!("nmrs init: {e}")),
                     }
                 })
-                .map(cosmic::Action::App);
+                .map(lingmo::Action::App);
             }
             Message::SecretAgent(agent_event) => match agent_event {
                 NmAgentEvent::RequestSecret {
@@ -1555,7 +1555,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                 }
             },
             Message::Refresh => {
-                return snapshot_task().map(cosmic::Action::App);
+                return snapshot_task().map(lingmo::Action::App);
             }
             Message::ToggleVPNPasswordVisibility => {
                 if let Some(requested_vpn) = self.nm_state.requested_vpn.as_mut() {
@@ -1590,7 +1590,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         }
                         Message::Refresh
                     })
-                    .map(cosmic::Action::App);
+                    .map(lingmo::Action::App);
                 }
             }
             Message::VPNPasswordUpdate(secure_string) => {
@@ -1606,7 +1606,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         }
                         Message::NoOp
                     })
-                    .map(cosmic::Action::App);
+                    .map(lingmo::Action::App);
                 }
             }
         }
@@ -1626,8 +1626,8 @@ impl cosmic::Application for CosmicNetworkApplet {
             space_xxs, space_s, ..
         } = theme::active().cosmic().spacing;
 
-        let mut vpn_ethernet_col: cosmic::iced::widget::Column<Message, cosmic::Theme> =
-            cosmic::widget::column::with_capacity(1);
+        let mut vpn_ethernet_col: lingmo::iced::widget::Column<Message, lingmo::Theme> =
+            lingmo::widget::column::with_capacity(1);
         let mut known_wifi = Vec::new();
         for conn in &self.nm_state.nm_state.active_conns {
             match conn {
@@ -1647,7 +1647,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                         info_col.push(elem);
                     }
                     vpn_ethernet_col = vpn_ethernet_col.push(
-                        column::with_capacity::<Message, cosmic::Theme, _>(2)
+                        column::with_capacity::<Message, lingmo::Theme, _>(2)
                             .push(
                                 row::with_children([
                                     Element::from(
@@ -1782,7 +1782,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                     }
                     if self.failed_known_ssids.contains(name.as_str()) {
                         btn_content.push(
-                            cosmic::widget::button::icon(
+                            lingmo::widget::button::icon(
                                 from_name("view-refresh-symbolic").size(16),
                             )
                             .icon_size(16)
@@ -1812,10 +1812,10 @@ impl cosmic::Application for CosmicNetworkApplet {
             }
         }
 
-        let mut content = cosmic::widget::column::with_capacity(known_wifi.len() + 1);
+        let mut content = lingmo::widget::column::with_capacity(known_wifi.len() + 1);
 
         if let Some(active_device) = self.active_device.as_ref() {
-            let menu_row = row::with_children::<'_, Message, cosmic::Theme, _>([
+            let menu_row = row::with_children::<'_, Message, lingmo::Theme, _>([
                 Element::<'_, Message>::from(
                     container(
                         icon::from_name("go-previous-symbolic")
@@ -2002,7 +2002,7 @@ impl cosmic::Application for CosmicNetworkApplet {
 
             if self.failed_known_ssids.contains(known.ssid.as_ref()) {
                 btn_content.push(
-                    cosmic::widget::button::icon(from_name("view-refresh-symbolic").size(16))
+                    lingmo::widget::button::icon(from_name("view-refresh-symbolic").size(16))
                         .icon_size(16)
                         .on_press(Message::ResetFailedKnownSsid(
                             known.ssid.to_string(),
@@ -2095,7 +2095,7 @@ impl cosmic::Application for CosmicNetworkApplet {
                     content = content.push(id);
 
                     let is_enterprise = matches!(access_point.network_type, NetworkType::Eap);
-                    let enter_password_col = cosmic::widget::column::with_capacity(4)
+                    let enter_password_col = lingmo::widget::column::with_capacity(4)
                         .push_maybe(is_enterprise.then(|| text::body(fl!("identity"))))
                         .push_maybe(is_enterprise.then(|| {
                             text_input::text_input("", identity).on_input(Message::IdentityUpdate)
@@ -2262,8 +2262,8 @@ impl cosmic::Application for CosmicNetworkApplet {
         activation_token_subscription(0).map(Message::Token)
     }
 
-    fn style(&self) -> Option<cosmic::iced::theme::Style> {
-        Some(cosmic::applet::style())
+    fn style(&self) -> Option<lingmo::iced::theme::Style> {
+        Some(lingmo::applet::style())
     }
 
     fn on_close_requested(&self, id: window::Id) -> Option<Message> {

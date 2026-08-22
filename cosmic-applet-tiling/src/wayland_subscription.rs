@@ -3,7 +3,7 @@
 
 use crate::wayland::{self, AppRequest};
 use cctk::sctk::reexports::calloop::channel::SyncSender;
-use cosmic::iced::{
+use lingmo::iced::{
     self, Subscription,
     futures::{self, SinkExt, StreamExt, channel::mpsc},
     stream,
@@ -61,7 +61,7 @@ async fn start_listening(
                 State::Error
             }
         }
-        State::Error => cosmic::iced::futures::future::pending().await,
+        State::Error => lingmo::iced::futures::future::pending().await,
     }
 }
 

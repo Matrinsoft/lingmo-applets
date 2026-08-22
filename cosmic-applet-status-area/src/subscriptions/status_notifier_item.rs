@@ -4,7 +4,7 @@
 use std::hash::Hash;
 use std::path::PathBuf;
 
-use cosmic::iced::{self, Subscription};
+use lingmo::iced::{self, Subscription};
 use futures::{FutureExt, StreamExt};
 use rustc_hash::FxHashMap;
 use zbus::zvariant::{self, OwnedValue};
