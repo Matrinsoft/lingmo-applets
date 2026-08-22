@@ -71,6 +71,13 @@ install: (_install_bin 'cosmic-applets') (_link_applet 'cosmic-panel-button') (_
 vendor:
     mkdir -p .cargo
     cargo vendor --locked 2>/dev/null | awk '/^\[/{p=1} p' > .cargo/config
+    if ! grep -q 'directory' .cargo/config 2>/dev/null; then
+        echo '[source.crates-io]' >> .cargo/config
+        echo 'replace-with = "vendored-sources"' >> .cargo/config
+        echo '' >> .cargo/config
+        echo '[source.vendored-sources]' >> .cargo/config
+        echo 'directory = "vendor"' >> .cargo/config
+    fi
     grep '^source = "git+' Cargo.lock | sed 's/source = "//;s/"$//' | sort -u | while read src; do \
         echo "[source.\"$src\"]"; \
         echo 'replace-with = "vendored-sources"'; \
