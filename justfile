@@ -29,7 +29,12 @@ build-debug *args:
 build-release *args: (build-debug '--release' args)
 
 # Compile with a vendored tarball
-build-vendored *args: vendor-extract (build-release '--frozen --offline' args)
+build-vendored *args:
+    vendor-extract
+    cp Cargo.toml Cargo.toml.bak
+    sed -i '/^\[patch/,/^$/d' Cargo.toml
+    cargo build --release {{ args }} --frozen --offline
+    mv Cargo.toml.bak Cargo.toml
 
 _link_applet name:
     ln -sf {{ cosmic-applets-bin }} {{ bindir }}/{{ name }}
@@ -68,10 +73,12 @@ install: (_install_bin 'cosmic-applets') (_link_applet 'cosmic-panel-button') (_
 # Vendor Cargo dependencies locally
 vendor:
     mkdir -p .cargo
-    cargo vendor --locked | head -n -1 > .cargo/config
-    echo 'directory = "vendor"' >> .cargo/config
-    tar pcf vendor.tar vendor
+    cp Cargo.toml Cargo.toml.bak
+    sed -i '/^\[patch/,/^$/d' Cargo.toml
+    cargo vendor --locked 2>/dev/null | awk '/^\[/{p=1} p' > .cargo/config
+    tar pcf vendor.tar vendor .cargo/config
     rm -rf vendor
+    mv Cargo.toml.bak Cargo.toml
 
 # Extracts vendored dependencies
 [private]
