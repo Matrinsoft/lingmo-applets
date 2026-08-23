@@ -1412,7 +1412,7 @@ dependencies = [
 [[package]]
 name = "cosmic-settings-a11y-manager-subscription"
 version = "1.0.7"
-source = "git+https://github.com/Matrinsoft/lingmo-settings#a679febf55aa5f665447d37822f79e8925805a20"
+source = "git+https://github.com/Matrinsoft/lingmo-settings#3aa3e6694441b028de2b1065fd3b8c6695129085"
 dependencies = [
  "cosmic-protocols",
  "iced_futures",
@@ -1426,7 +1426,7 @@ dependencies = [
 [[package]]
 name = "cosmic-settings-accessibility-subscription"
 version = "1.0.7"
-source = "git+https://github.com/Matrinsoft/lingmo-settings#a679febf55aa5f665447d37822f79e8925805a20"
+source = "git+https://github.com/Matrinsoft/lingmo-settings#3aa3e6694441b028de2b1065fd3b8c6695129085"
 dependencies = [
  "cosmic-dbus-a11y",
  "futures",
@@ -1487,7 +1487,7 @@ dependencies = [
 [[package]]
 name = "cosmic-settings-daemon-subscription"
 version = "1.0.7"
-source = "git+https://github.com/Matrinsoft/lingmo-settings#a679febf55aa5f665447d37822f79e8925805a20"
+source = "git+https://github.com/Matrinsoft/lingmo-settings#3aa3e6694441b028de2b1065fd3b8c6695129085"
 dependencies = [
  "futures",
  "iced_futures",
@@ -1500,7 +1500,7 @@ dependencies = [
 [[package]]
 name = "cosmic-settings-upower-subscription"
 version = "1.0.7"
-source = "git+https://github.com/Matrinsoft/lingmo-settings#a679febf55aa5f665447d37822f79e8925805a20"
+source = "git+https://github.com/Matrinsoft/lingmo-settings#3aa3e6694441b028de2b1065fd3b8c6695129085"
 dependencies = [
  "futures",
  "iced_futures",
