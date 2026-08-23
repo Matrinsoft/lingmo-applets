@@ -25,11 +25,11 @@ resolver = "3"
 
 [workspace.dependencies]
 anyhow = "1.0.102"
-cctk = { git = "https://github.com/Matrinsoft/lingmo-protocols", package = "cosmic-client-toolkit", rev = "bc41a9a7" }
+cctk = { git = "https://github.com/Matrinsoft/lingmo-protocols", package = "cosmic-client-toolkit", rev = "14ee91d" }
 cosmic-applets-config = { path = "cosmic-applets-config" }
 cosmic-protocols = { git = "https://github.com/Matrinsoft/lingmo-protocols", default-features = false, features = [
     "client",
-], rev = "bc41a9a7" }
+], rev = "14ee91d" }
 
 futures = "0.3"
 futures-util = "0.3"
@@ -82,8 +82,8 @@ ignored = ["libcosmic"]
 sctk = { package = "smithay-client-toolkit", version = "0.20.0" }
 
 [patch."https://github.com/Matrinsoft/lingmo-protocols"]
-cosmic-protocols = { git = "https://github.com/Matrinsoft/lingmo-protocols//", rev = "bc41a9a7" }
-cosmic-client-toolkit = { git = "https://github.com/Matrinsoft/lingmo-protocols//", rev = "bc41a9a7" }
+cosmic-protocols = { git = "https://github.com/Matrinsoft/lingmo-protocols//", rev = "14ee91d" }
+cosmic-client-toolkit = { git = "https://github.com/Matrinsoft/lingmo-protocols//", rev = "14ee91d" }
 
 # [patch.'https://github.com/pop-os/dbus-settings-bindings']
 # cosmic-dbus-networkmanager = { path = "../dbus-settings-bindings/networkmanager" }
