@@ -9,5 +9,5 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting workspaces applet with version {VERSION}");
 
-    cosmic_panel_button::run()
+    lingmo_panel_button::run()
 }
