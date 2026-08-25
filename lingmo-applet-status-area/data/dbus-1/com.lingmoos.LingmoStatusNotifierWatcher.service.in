@@ -1,5 +1,5 @@
 [D-BUS Service]
-Name=com.system76.CosmicStatusNotifierWatcher
+Name=com.lingmoos.LingmoStatusNotifierWatcher
 Exec=@bindir@/lingmo-applet-status-area --status-notifier-watcher
-SystemdService=com.system76.CosmicStatusNotifierWatcher.service
+SystemdService=com.lingmoos.LingmoStatusNotifierWatcher.service
 

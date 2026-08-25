@@ -3,6 +3,6 @@ Description=COSMIC Status Notifier Watcher backend
 
 [Service]
 Type=dbus
-BusName=com.system76.CosmicStatusNotifierWatcher
+BusName=com.lingmoos.LingmoStatusNotifierWatcher
 ExecStart=@bindir@/lingmo-applet-status-area --status-notifier-watcher
 
