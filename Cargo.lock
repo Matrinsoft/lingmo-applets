@@ -1439,7 +1439,7 @@ dependencies = [
 [[package]]
 name = "lingmo-settings-audio-client"
 version = "1.0.0"
-source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#7e9ad25c91b4cff03a4472b83e238510fd87abff"
+source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#603548827b3fabfbac8d996d0ad43e65af16286e"
 dependencies = [
  "lingmo-settings-audio-core",
  "dirs",
@@ -1455,7 +1455,7 @@ dependencies = [
 [[package]]
 name = "lingmo-settings-audio-core"
 version = "1.0.0"
-source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#7e9ad25c91b4cff03a4472b83e238510fd87abff"
+source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#603548827b3fabfbac8d996d0ad43e65af16286e"
 dependencies = [
  "dirs",
  "ron 0.12.2",
@@ -1466,7 +1466,7 @@ dependencies = [
 [[package]]
 name = "cosmic-settings-config"
 version = "0.1.0"
-source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#7e9ad25c91b4cff03a4472b83e238510fd87abff"
+source = "git+https://github.com/Matrinsoft/lingmo-settings-daemon#603548827b3fabfbac8d996d0ad43e65af16286e"
 dependencies = [
  "cosmic-config",
  "ron 0.11.0",
