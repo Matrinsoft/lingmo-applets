@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting accessibility applet with version {VERSION}");
 
-    cosmic_applet_a11y::run()
+    lingmo_applet_a11y::run()
 }
+

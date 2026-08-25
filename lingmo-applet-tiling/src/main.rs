@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting tiling applet with version {VERSION}");
 
-    cosmic_applet_tiling::run()
+    lingmo_applet_tiling::run()
 }
+

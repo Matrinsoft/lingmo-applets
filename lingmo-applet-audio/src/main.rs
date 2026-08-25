@@ -9,5 +9,6 @@ pub fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting audio applet with version {VERSION}");
 
-    cosmic_applet_audio::run()
+    lingmo_applet_audio::run()
 }
+

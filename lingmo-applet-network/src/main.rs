@@ -6,5 +6,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting network applet with version {VERSION}");
 
-    cosmic_applet_network::run()
+    lingmo_applet_network::run()
 }
+

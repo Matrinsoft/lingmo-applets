@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting bluetooth applet with version {VERSION}");
 
-    cosmic_applet_bluetooth::run()
+    lingmo_applet_bluetooth::run()
 }
+

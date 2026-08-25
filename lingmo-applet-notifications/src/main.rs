@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting notifications applet with version {VERSION}");
 
-    cosmic_applet_notifications::run()
+    lingmo_applet_notifications::run()
 }
+

@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting time applet with version {VERSION}");
 
-    cosmic_applet_time::run()
+    lingmo_applet_time::run()
 }
+

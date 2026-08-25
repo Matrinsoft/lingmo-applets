@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting power applet with version {VERSION}");
 
-    cosmic_applet_power::run()
+    lingmo_applet_power::run()
 }
+

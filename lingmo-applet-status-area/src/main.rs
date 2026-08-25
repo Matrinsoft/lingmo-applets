@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting status-area applet with version {VERSION}");
 
-    cosmic_applet_status_area::run()
+    lingmo_applet_status_area::run()
 }
+

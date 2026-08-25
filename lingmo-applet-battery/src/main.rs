@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting battery applet with version {VERSION}");
 
-    cosmic_applet_battery::run()
+    lingmo_applet_battery::run()
 }
+

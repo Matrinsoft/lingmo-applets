@@ -9,5 +9,6 @@ fn main() -> cosmic::iced::Result {
 
     tracing::info!("Starting minimize applet with version {VERSION}");
 
-    cosmic_applet_minimize::run()
+    lingmo_applet_minimize::run()
 }
+
