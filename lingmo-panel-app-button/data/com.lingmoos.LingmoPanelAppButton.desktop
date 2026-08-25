@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=App Library Button
+Comment=Open the application library for launching installed applications
+Type=Application
+Exec=Lingmo-panel-button com.lingmoos.LingmoAppLibrary
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;App;Library;Tray;
+Icon=com.lingmoos.LingmoPanelAppButton
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-OverflowPriority=10
+
+

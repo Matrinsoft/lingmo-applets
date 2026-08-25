@@ -1,0 +1,29 @@
+[package]
+name = "lingmo-applets"
+version = "1.0.15"
+edition = "2024"
+license = "GPL-3.0-only"
+
+[build-dependencies]
+xdgen = "0.1"
+
+[dependencies]
+lingmo-app-list = { path = "../lingmo-app-list" }
+lingmo-applet-audio = { path = "../lingmo-applet-audio" }
+lingmo-applet-a11y = { path = "../lingmo-applet-a11y" }
+lingmo-applet-battery = { path = "../lingmo-applet-battery" }
+lingmo-applet-bluetooth = { path = "../lingmo-applet-bluetooth" }
+lingmo-applet-minimize = { path = "../lingmo-applet-minimize" }
+lingmo-applet-network = { path = "../lingmo-applet-network" }
+lingmo-applet-notifications = { path = "../lingmo-applet-notifications" }
+lingmo-applet-power = { path = "../lingmo-applet-power" }
+lingmo-applet-status-area = { path = "../lingmo-applet-status-area" }
+lingmo-applet-tiling = { path = "../lingmo-applet-tiling" }
+lingmo-applet-time = { path = "../lingmo-applet-time" }
+lingmo-applet-workspaces = { path = "../lingmo-applet-workspaces" }
+lingmo-applet-input-sources = { path = "../lingmo-applet-input-sources" }
+lingmo-panel-button = { path = "../lingmo-panel-button" }
+libcosmic.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-log.workspace = true

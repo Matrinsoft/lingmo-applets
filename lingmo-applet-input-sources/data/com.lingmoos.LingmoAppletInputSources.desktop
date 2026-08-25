@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Input Sources
+Comment=Switch between input sources
+Type=Application
+Exec=Lingmo-applet-input-sources
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Input;Source;
+Icon=com.lingmoos.LingmoAppletInputSources-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=Auto
+X-HostWaylandDisplay=true
+X-OverflowPriority=10
+
+

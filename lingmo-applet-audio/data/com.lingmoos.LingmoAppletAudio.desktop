@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Sound
+Comment=Audio device selection, volume control, and MPRIS media controls
+Type=Application
+Exec=Lingmo-applet-audio
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Sound;Audio;MPRIS;
+Icon=com.lingmoos.LingmoAppletAudio-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=End
+X-OverflowPriority=10
+
+

@@ -13,9 +13,9 @@ iconsdir := sharedir + '/icons/hicolor'
 prefixdir := prefix + '/bin'
 bindir := rootdir + prefixdir
 libdir := rootdir + prefix + '/lib'
-default-schema-target := sharedir / 'cosmic'
-cosmic-applets-bin := prefixdir / 'cosmic-applets'
-metainfo := 'com.system76.CosmicApplets.metainfo.xml'
+default-schema-target := sharedir / 'lingmo'
+lingmo-applets-bin := prefixdir / 'lingmo-applets'
+metainfo := 'com.lingmoos.LingmoApplets.metainfo.xml'
 metainfo-src := 'data' / metainfo
 metainfo-dst := clean(rootdir / prefix) / 'share' / 'metainfo' / metainfo
 
@@ -34,7 +34,7 @@ build-vendored *args:
     cargo build --release {{ args }} --frozen --offline
 
 _link_applet name:
-    ln -sf {{ cosmic-applets-bin }} {{ bindir }}/{{ name }}
+    ln -sf {{ lingmo-applets-bin }} {{ bindir }}/{{ name }}
 
 _install_icons name:
     find {{ name }}/'data'/'icons' -type f -exec echo {} \; | rev | cut -d'/' -f-3 | rev | xargs -d '\n' -I {} install -Dm0644 {{ name }}/'data'/'icons'/{} {{ iconsdir }}/{}
@@ -56,16 +56,16 @@ _install_metainfo:
     install -Dm0644 {{ metainfo-src }} {{ metainfo-dst }}
 
 _install_status_notifier_watcher:
-    sed "s|@bindir@|{{ prefixdir }}|" cosmic-applet-status-area/data/dbus-1/com.system76.CosmicStatusNotifierWatcher.service.in > cosmic-applet-status-area/data/dbus-1/com.system76.CosmicStatusNotifierWatcher.service
-    install -Dm0644 cosmic-applet-status-area/data/dbus-1/com.system76.CosmicStatusNotifierWatcher.service {{ sharedir }}/dbus-1/services/com.system76.CosmicStatusNotifierWatcher.service
-    sed "s|@bindir@|{{ prefixdir }}|" cosmic-applet-status-area/data/com.system76.CosmicStatusNotifierWatcher.service.in > cosmic-applet-status-area/data/com.system76.CosmicStatusNotifierWatcher.service
-    install -Dm0644 cosmic-applet-status-area/data/com.system76.CosmicStatusNotifierWatcher.service {{ libdir }}/systemd/user/com.system76.CosmicStatusNotifierWatcher.service
+    sed "s|@bindir@|{{ prefixdir }}|" lingmo-applet-status-area/data/dbus-1/com.lingmoos.LingmoStatusNotifierWatcher.service.in > lingmo-applet-status-area/data/dbus-1/com.lingmoos.LingmoStatusNotifierWatcher.service
+    install -Dm0644 lingmo-applet-status-area/data/dbus-1/com.lingmoos.LingmoStatusNotifierWatcher.service {{ sharedir }}/dbus-1/services/com.lingmoos.LingmoStatusNotifierWatcher.service
+    sed "s|@bindir@|{{ prefixdir }}|" lingmo-applet-status-area/data/com.lingmoos.LingmoStatusNotifierWatcher.service.in > lingmo-applet-status-area/data/com.lingmoos.LingmoStatusNotifierWatcher.service
+    install -Dm0644 lingmo-applet-status-area/data/com.lingmoos.LingmoStatusNotifierWatcher.service {{ libdir }}/systemd/user/com.lingmoos.LingmoStatusNotifierWatcher.service
 
 _install_secret_agent_policy:
-    install -Dm0644 cosmic-applet-network/data/dbus-1/system.d/com.system76.CosmicSettings.Applet.NetworkManager.SecretAgent.conf {{ sharedir }}/dbus-1/system.d/com.system76.CosmicSettings.Applet.NetworkManager.SecretAgent.conf
+    install -Dm0644 lingmo-applet-network/data/dbus-1/system.d/com.lingmoos.LingmoSettings.Applet.NetworkManager.SecretAgent.conf {{ sharedir }}/dbus-1/system.d/com.lingmoos.LingmoSettings.Applet.NetworkManager.SecretAgent.conf
 
 # Installs files into the system
-install: (_install_bin 'cosmic-applets') (_link_applet 'cosmic-panel-button') (_install_applet 'com.system76.CosmicAppList' 'cosmic-app-list') (_install_default_schema 'cosmic-app-list') (_install_applet 'com.system76.CosmicAppletA11y' 'cosmic-applet-a11y') (_install_applet 'com.system76.CosmicAppletAudio' 'cosmic-applet-audio') (_install_applet 'com.system76.CosmicAppletInputSources' 'cosmic-applet-input-sources') (_install_applet 'com.system76.CosmicAppletBattery' 'cosmic-applet-battery') (_install_applet 'com.system76.CosmicAppletBluetooth' 'cosmic-applet-bluetooth') (_install_applet 'com.system76.CosmicAppletMinimize' 'cosmic-applet-minimize') (_install_applet 'com.system76.CosmicAppletNetwork' 'cosmic-applet-network') (_install_applet 'com.system76.CosmicAppletNotifications' 'cosmic-applet-notifications') (_install_applet 'com.system76.CosmicAppletPower' 'cosmic-applet-power') (_install_applet 'com.system76.CosmicAppletStatusArea' 'cosmic-applet-status-area') (_install_applet 'com.system76.CosmicAppletTiling' 'cosmic-applet-tiling') (_install_applet 'com.system76.CosmicAppletTime' 'cosmic-applet-time') (_install_applet 'com.system76.CosmicAppletWorkspaces' 'cosmic-applet-workspaces') (_install_button 'com.system76.CosmicPanelAppButton' 'cosmic-panel-app-button') (_install_button 'com.system76.CosmicPanelLauncherButton' 'cosmic-panel-launcher-button') (_install_button 'com.system76.CosmicPanelWorkspacesButton' 'cosmic-panel-workspaces-button') _install_metainfo _install_status_notifier_watcher _install_secret_agent_policy
+install: (_install_bin 'lingmo-applets') (_link_applet 'lingmo-panel-button') (_install_applet 'com.lingmoos.LingmoAppList' 'lingmo-app-list') (_install_default_schema 'lingmo-app-list') (_install_applet 'com.lingmoos.LingmoAppletA11y' 'lingmo-applet-a11y') (_install_applet 'com.lingmoos.LingmoAppletAudio' 'lingmo-applet-audio') (_install_applet 'com.lingmoos.LingmoAppletInputSources' 'lingmo-applet-input-sources') (_install_applet 'com.lingmoos.LingmoAppletBattery' 'lingmo-applet-battery') (_install_applet 'com.lingmoos.LingmoAppletBluetooth' 'lingmo-applet-bluetooth') (_install_applet 'com.lingmoos.LingmoAppletMinimize' 'lingmo-applet-minimize') (_install_applet 'com.lingmoos.LingmoAppletNetwork' 'lingmo-applet-network') (_install_applet 'com.lingmoos.LingmoAppletNotifications' 'lingmo-applet-notifications') (_install_applet 'com.lingmoos.LingmoAppletPower' 'lingmo-applet-power') (_install_applet 'com.lingmoos.LingmoAppletStatusArea' 'lingmo-applet-status-area') (_install_applet 'com.lingmoos.LingmoAppletTiling' 'lingmo-applet-tiling') (_install_applet 'com.lingmoos.LingmoAppletTime' 'lingmo-applet-time') (_install_applet 'com.lingmoos.LingmoAppletWorkspaces' 'lingmo-applet-workspaces') (_install_button 'com.lingmoos.LingmoPanelAppButton' 'lingmo-panel-app-button') (_install_button 'com.lingmoos.LingmoPanelLauncherButton' 'lingmo-panel-launcher-button') (_install_button 'com.lingmoos.LingmoPanelWorkspacesButton' 'lingmo-panel-workspaces-button') _install_metainfo _install_status_notifier_watcher _install_secret_agent_policy
 
 # Vendor Cargo dependencies locally
 vendor:

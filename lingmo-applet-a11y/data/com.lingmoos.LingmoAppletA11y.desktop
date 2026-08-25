@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Accessibility
+Comment=Configure accessibility settings from the panel
+Type=Application
+Exec=Lingmo-applet-a11y
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Accessibility;A11y;Screen;Reader;Magnifier;Contrast;Color;
+Icon=preferences-desktop-accessibility-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=Auto
+X-OverflowPriority=10
+
+

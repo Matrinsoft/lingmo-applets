@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=User Session
+Comment=Lock screen, log out, suspend, reboot, and shutdown
+Type=Application
+Exec=Lingmo-applet-power
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;User;Session;Lock;Log;Reboot;Shutdown;Suspend;
+Icon=com.lingmoos.LingmoAppletPower-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=Auto
+X-OverflowPriority=10
+
+

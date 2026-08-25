@@ -1,0 +1,9 @@
+Lingmo-app-list = ऐप ट्रे
+pin = ऐप ट्रे मे�?पि�?करें
+quit = बाहर जाएँ
+quit-all = सभी बं�?करें
+new-window = नई विंड�?
+run = चलाए�?
+run-on = { $gpu } पर चलाए�?
+run-on-default = (डिफ़ॉल्ट)
+

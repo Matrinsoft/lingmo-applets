@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Notifications Tray
+Comment=Application indicators which may export menus to the panel
+Type=Application
+Exec=Lingmo-applet-status-area
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;App;Indicator;Notification;Tray;Status;
+Icon=com.lingmoos.LingmoAppletStatusArea
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoHoverPopup=Auto
+X-OverflowPriority=99
+X-OverflowMinSize=2
+
+

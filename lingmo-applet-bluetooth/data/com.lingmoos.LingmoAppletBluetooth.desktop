@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Bluetooth
+Comment=Manage Bluetooth devices
+Type=Application
+Exec=Lingmo-applet-bluetooth
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Bluetooth;
+Icon=com.lingmoos.LingmoAppletBluetooth-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=Auto
+X-OverflowPriority=10
+
+

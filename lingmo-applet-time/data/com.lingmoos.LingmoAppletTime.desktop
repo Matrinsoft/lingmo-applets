@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Date, Time & Calendar
+Comment=Display the current time in the panel with a calendar popup
+Type=Application
+Exec=Lingmo-applet-time
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Date;Time;Calendar;
+Icon=com.lingmoos.LingmoAppletTime-symbolic
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-HostWaylandDisplay=true
+X-LingmoHoverPopup=Auto
+# No shrink priority, as this applet is always visible when configured
+
+

@@ -1,5 +1,5 @@
 {
-  description = "Applets for the COSMIC desktop environment";
+  description = "Applets for the Lingmo desktop environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -23,7 +23,7 @@
 	craneLib = (crane.mkLib pkgs).overrideToolchain fenix.packages.${system}.stable.toolchain;
 
         pkgDef = {
-          pname = "cosmic-applets";
+          pname = "lingmo-applets";
           version = "1.0.0";
           src = nix-filter.lib.filter {
             root = ./.;

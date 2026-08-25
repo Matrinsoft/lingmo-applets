@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Minimized Windows
+Comment=Manage minimized windows
+Type=Application
+Exec=Lingmo-applet-minimize
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Minimize;
+Icon=com.lingmoos.LingmoAppletMinimize
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-MinimizeApplet=10
+X-HostWaylandDisplay=true
+X-OverflowPriority=50
+X-OverflowMinSize=2
+
+

@@ -1,10 +1,11 @@
-cosmic-applet-a11y-keywords = COSMIC; ᱮᱯᱞᱮᱴ; ᱮᱠᱥᱮᱥᱤᱵᱤᱞᱤᱴᱤ; A11y; ᱥᱠᱨᱤᱱ; ᱨᱤᱰᱟᱨ; ᱢᱮᱜᱽᱱᱤᱯᱷᱟᱭᱟᱨ; ᱠᱚᱱᱴᱨᱟᱥᱴ; ᱨᱚᱝ;
-cosmic-applet-bluetooth-comment = ᱵᱞᱩᱴᱩᱛᱷ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱥᱚᱢᱵᱷᱲᱟᱣ ᱢᱮ
-cosmic-applet-input-sources-comment = ᱤᱱᱯᱩᱴ ᱥᱚᱨᱥ ᱠᱚ ᱛᱟᱞᱟ ᱨᱮ ᱵᱚᱫᱚᱞ ᱢᱮ
-cosmic-applet-input-sources-keywords = ᱠᱚᱥᱢᱤᱠ; ᱮᱯᱞᱮᱴ; ᱤᱱᱯᱩᱴ; ᱥᱨᱚᱛ;
-cosmic-applet-minimize = ᱦᱩᱰᱤᱧ ᱟᱠᱟᱱ ᱡᱟᱨᱞᱟ
-cosmic-applet-status-area = ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱴᱨᱮ
-cosmic-applet-status-area-comment = ᱮᱯᱞᱤᱠᱮᱥᱚᱱ ᱤᱱᱰᱤᱠᱮᱴᱚᱨ ᱚᱠᱟ ᱫᱚ ᱯᱮᱱᱮᱞ ᱨᱮ ᱢᱮᱱᱭᱩᱥ ᱮ ᱮᱠᱥᱯᱚᱨᱴ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ
-cosmic-applet-status-area-keywords = ᱠᱚᱥᱢᱤᱠ; ᱮᱯᱞᱮᱴ; ᱮᱯ; ᱤᱱᱰᱤᱠᱮᱴᱚᱨ; ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ; ᱴᱨᱮ; ᱥᱴᱮᱴᱟᱥ;
-cosmic-applet-time = ᱢᱟᱦᱟᱸ, ᱚᱠᱛᱚ ᱟᱨ ᱠᱮᱞᱮᱱᱰᱟᱨ
-cosmic-panel-launcher-button = ᱞᱚᱱᱪᱟᱨ ᱵᱩᱛᱟᱢ
+lingmo-applet-a11y-keywords = Lingmo; ᱮᱯᱞᱮ�? ᱮᱠᱥᱮᱥᱤᱵᱤᱞᱤᱴᱤ; A11y; ᱥᱠᱨᱤ�? ᱨᱤᱰᱟ�? ᱢᱮᱜᱽᱱᱤᱯᱷᱟᱭᱟᱨ; ᱠᱚᱱᱴᱨᱟᱥᱴ; ᱨᱚ�?
+lingmo-applet-bluetooth-comment = ᱵᱞᱩᱴᱩᱛ�?ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱥᱚᱢᱵᱷᱲᱟᱣ ᱢᱮ
+lingmo-applet-input-sources-comment = ᱤᱱᱯᱩ�?ᱥᱚᱨᱥ ᱠᱚ ᱛᱟᱞᱟ ᱨᱮ ᱵᱚᱫᱚ�?ᱢᱮ
+lingmo-applet-input-sources-keywords = ᱠᱚᱥᱢᱤᱠ; ᱮᱯᱞᱮ�? ᱤᱱᱯᱩ�? ᱥᱨᱚᱛ;
+lingmo-applet-minimize = ᱦᱩᱰᱤ�?ᱟᱠᱟᱱ ᱡᱟᱨᱞ�?
+lingmo-applet-status-area = ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱴᱨ�?
+lingmo-applet-status-area-comment = ᱮᱯᱞᱤᱠᱮᱥᱚ�?ᱤᱱᱰᱤᱠᱮᱴᱚ�?ᱚᱠ�?ᱫᱚ ᱯᱮᱱᱮ�?ᱨᱮ ᱢᱮᱱᱭᱩᱥ �?ᱮᱠᱥᱯᱚᱨ�?ᱫᱟᱲᱮᱭᱟᱜᱼ�?
+lingmo-applet-status-area-keywords = ᱠᱚᱥᱢᱤᱠ; ᱮᱯᱞᱮ�? ᱮᱯ; ᱤᱱᱰᱤᱠᱮᱴᱚ�? ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ; ᱴᱨ�? ᱥᱴᱮᱴᱟᱥ;
+lingmo-applet-time = ᱢᱟᱦᱟ�? ᱚᱠᱛᱚ ᱟᱨ ᱠᱮᱞᱮᱱᱰᱟᱨ
+lingmo-panel-launcher-button = ᱞᱚᱱᱪᱟᱨ ᱵᱩᱛᱟ�?
+

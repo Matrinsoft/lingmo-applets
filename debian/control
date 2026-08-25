@@ -30,4 +30,4 @@ Depends:
 Recommends:
   pipewire-pulse
 Provides: system76-power-applet-virtual
-Description: Cosmic Applets
+Description: Lingmo Applets

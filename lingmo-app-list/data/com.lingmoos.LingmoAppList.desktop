@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=App Tray
+Comment=Launch pinned apps and manage open windows
+Type=Application
+Exec=Lingmo-app-list
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;App;Tray;List;Task;Bar;
+Icon=com.lingmoos.LingmoAppList
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-MinimizeApplet=5
+X-OverflowPriority=100
+X-OverflowMinSize=4
+X-HostWaylandDisplay=true
+
+

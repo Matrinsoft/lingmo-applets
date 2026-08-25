@@ -1,0 +1,9 @@
+[package]
+name = "lingmo-applets-config"
+version = "1.0.15"
+edition = "2024"
+
+[dependencies]
+cosmic-config.workspace = true
+serde.workspace = true
+

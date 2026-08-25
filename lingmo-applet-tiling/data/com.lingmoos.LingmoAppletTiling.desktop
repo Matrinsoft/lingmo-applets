@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Tiling
+Comment=Manage the active hint, current & per-workspace auto-tiling
+Type=Application
+Exec=Lingmo-applet-tiling
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Tiling;Hint;Workspace;
+Icon=com.lingmoos.LingmoAppletTiling-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-HostWaylandDisplay=true
+X-LingmoHoverPopup=Auto
+
+

@@ -1,24 +1,24 @@
 [workspace]
-default-members = ["cosmic-applets", "cosmic-panel-button"]
+default-members = ["lingmo-applets", "lingmo-panel-button"]
 members = [
-    "cosmic-app-list",
-    "cosmic-app-list/cosmic-app-list-config",
-    "cosmic-applets",
-    "cosmic-applet-audio",
-    "cosmic-applet-battery",
-    "cosmic-applet-bluetooth",
-    "cosmic-applet-minimize",
-    "cosmic-applet-network",
-    "cosmic-applet-notifications",
-    "cosmic-applet-power",
-    "cosmic-applet-status-area",
-    "cosmic-applet-tiling",
-    "cosmic-applet-time",
-    "cosmic-applet-workspaces",
-    "cosmic-panel-button",
-    "cosmic-applet-input-sources",
-    "cosmic-applet-a11y",
-    "cosmic-applets-config",
+    "lingmo-app-list",
+    "lingmo-app-list/lingmo-app-list-config",
+    "lingmo-applets",
+    "lingmo-applet-audio",
+    "lingmo-applet-battery",
+    "lingmo-applet-bluetooth",
+    "lingmo-applet-minimize",
+    "lingmo-applet-network",
+    "lingmo-applet-notifications",
+    "lingmo-applet-power",
+    "lingmo-applet-status-area",
+    "lingmo-applet-tiling",
+    "lingmo-applet-time",
+    "lingmo-applet-workspaces",
+    "lingmo-panel-button",
+    "lingmo-applet-input-sources",
+    "lingmo-applet-a11y",
+    "lingmo-applets-config",
 ]
 
 resolver = "3"
@@ -26,7 +26,7 @@ resolver = "3"
 [workspace.dependencies]
 anyhow = "1.0.102"
 cctk = { git = "https://github.com/Matrinsoft/lingmo-protocols", package = "cosmic-client-toolkit", rev = "693c176" }
-cosmic-applets-config = { path = "cosmic-applets-config" }
+lingmo-applets-config = { path = "lingmo-applets-config" }
 cosmic-protocols = { git = "https://github.com/Matrinsoft/lingmo-protocols", default-features = false, features = [
     "client",
 ], rev = "693c176" }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.lingmoos.LingmoApplets</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <project_group>Lingmo</project_group>
+  <developer_name>System76</developer_name>
+  <update_contact>ashley@system76.com</update_contact>
+  <url type="homepage">https://github.com/pop-os/Lingmo-applets</url>
+  <url type="bugtracker">https://github.com/pop-os/Lingmo-applets</url>
+  <name>Lingmo Applets</name>
+  <name xml:lang="ar">بريمجات Lingmo</name>
+  <name xml:lang="bg">Графични обекти за Lingmo</name>
+  <name xml:lang="cs">Applety Lingmo</name>
+  <name xml:lang="pl">Aplety Lingmo</name>
+  <name xml:lang="pt_BR">Miniaplicativos</name>
+  <name xml:lang="pt">Miniaplicativos</name>
+  <name xml:lang="hu">Lingmo Kisalkalmazások</name>
+  <name xml:lang="sk">Aplety Lingmo</name>
+  <name xml:lang="es">Applets Lingmo</name>
+  <name xml:lang="sv">Lingmo Miniprogram</name>
+  <summary>Applets for the Lingmo panel</summary>
+  <summary xml:lang="ar">بريمجات للوحة Lingmo</summary>
+  <summary xml:lang="bg">Графични обекти за панела на Lingmo</summary>
+  <summary xml:lang="cs">Applety pro panel Lingmo</summary>
+  <summary xml:lang="pl">Aplety dla panelu Lingmo</summary>
+  <summary xml:lang="pt_BR">Miniaplicativos para o painel do Lingmo</summary>
+  <summary xml:lang="pt">Miniaplicativos para o painel do Lingmo</summary>
+  <summary xml:lang="hu">Kisalkalmazások a Lingmo panelhez</summary>
+  <summary xml:lang="nl">Applets voor het paneel van Lingmo</summary>
+  <summary xml:lang="de">Applets für das Lingmo-Panel</summary>
+  <summary xml:lang="sk">Aplety pre panel Lingmo</summary>
+  <summary xml:lang="es">Applets para el panel de Lingmo</summary>
+  <summary xml:lang="sv">Miniprogram för Lingmo-panelen</summary>
+  <description>
+    <p>Applets for the Lingmo panel</p>
+    <p xml:lang="ar">بريمجات للوحة Lingmo</p>
+    <p xml:lang="bg">Графични обекти за панела на Lingmo</p>
+    <p xml:lang="cs">Applety pro panel Lingmo</p>
+    <p xml:lang="pl">Aplety dla panelu Lingmo</p>
+    <p xml:lang="pt_BR">Miniaplicativos para o painel do Lingmo</p>
+    <p xml:lang="pt">Miniaplicativos para o painel do Lingmo</p>
+    <p xml:lang="hu">Kisalkalmazások a Lingmo panelhez</p>
+    <p xml:lang="nl">Applets voor het paneel van Lingmo</p>
+    <p xml:lang="de">Applets für das Lingmo-Panel</p>
+    <p xml:lang="sk">Aplety pre panel Lingmo</p>
+    <p xml:lang="es">Applets para el panel de Lingmo</p>
+    <p xml:lang="sv">Miniprogram för Lingmo-panelen</p>
+  </description>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletAppList.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletAudio.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletBattery.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletBluetooth.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletInputSources.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletMinimize.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletNetwork.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletNotifications.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletPower.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletStatusArea.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletTiling.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletTime.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletWorkspaces.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletAppButton.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletWorkspacesButton.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoAppletLauncherButton.desktop</launchable>
+  <launchable type="desktop-id">com.lingmoos.LingmoApplet.desktop</launchable>
+  <icon type="remote" width="256" height="256">
+    https://raw.githubusercontent.com/pop-os/Lingmo-applets/master/Lingmo-app-list/data/icons/scalable/apps/com.lingmoos.LingmoAppList.svg</icon>
+  <screenshots>
+  </screenshots>
+  <provides>
+    <id>com.lingmoos.LingmoApplet</id>
+    <mimetypes>
+      <mimetype>text/plain</mimetype>
+    </mimetypes>
+    <binaries>
+      <binary>Lingmo-app-list</binary>
+      <binary>Lingmo-applet-audio</binary>
+      <binary>Lingmo-applet-battery</binary>
+      <binary>Lingmo-applet-bluetooth</binary>
+      <binary>Lingmo-applet-Lingmo-panel-button</binary>
+      <binary>Lingmo-applet-input-sources</binary>
+      <binary>Lingmo-applet-minimize</binary>
+      <binary>Lingmo-applet-network</binary>
+      <binary>Lingmo-applet-notifications</binary>
+      <binary>Lingmo-applet-power</binary>
+      <binary>Lingmo-applet-status-area</binary>
+      <binary>Lingmo-applet-tiling</binary>
+      <binary>Lingmo-applet-time</binary>
+      <binary>Lingmo-applet-workspaces</binary>
+    </binaries>
+  </provides>
+</component>
+

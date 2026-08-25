@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Power & Battery
+Comment=Power modes and power saving options
+Type=Application
+Exec=Lingmo-applet-battery
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Power;Battery;
+Icon=com.lingmoos.LingmoAppletBattery-symbolic
+StartupNotify=true
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-LingmoHoverPopup=Start
+X-OverflowPriority=10
+
+

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Notifications Center
+Comment=Manage notifications and Do Not Disturb
+Type=Application
+Exec=Lingmo-applet-notifications
+Terminal=false
+Categories=Lingmo;
+Keywords=Lingmo;Applet;Notification;
+Icon=com.lingmoos.LingmoAppletNotifications-symbolic
+NoDisplay=true
+X-LingmoApplet=true
+X-LingmoShrinkable=true
+X-NotificationsApplet=true
+X-LingmoHoverPopup=Auto
+X-OverflowPriority=10
+
+

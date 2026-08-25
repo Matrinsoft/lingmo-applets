@@ -1,1 +1,2 @@
-cosmic-applet-a11y = アクセシビリティ
+lingmo-applet-a11y = アクセシビリティ
+
