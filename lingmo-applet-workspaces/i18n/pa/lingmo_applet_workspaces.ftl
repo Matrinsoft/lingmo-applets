@@ -1,2 +1,1 @@
-Lingmo-applet-workspaces = Lingmo ਵਰਕਸਪੇ�?
-
+lingmo-applet-workspaces = LINGMO 啜掂ò啜曕ǜ啜﹪啜?

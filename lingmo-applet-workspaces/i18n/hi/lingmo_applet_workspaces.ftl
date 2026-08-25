@@ -1,2 +1,1 @@
-Lingmo-applet-workspaces = कास्मि�?वर्कस्पेसे�?
-
+lingmo-applet-workspaces = 啶曕ぞ啶膏啶た啶?啶掂ぐ啷嵿啶膏啶啶膏啶?

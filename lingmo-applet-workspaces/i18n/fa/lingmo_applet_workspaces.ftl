@@ -1,2 +1,1 @@
-Lingmo-applet-workspaces = محیط‌ها�?کاری Lingmo
-
+lingmo-applet-workspaces = 賲丨蹖胤鈥屬囏й?讴丕乇蹖 LINGMO

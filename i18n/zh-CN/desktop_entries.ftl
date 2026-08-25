@@ -1,52 +1,40 @@
-lingmo-app-list = 应用托盘
-lingmo-applet-a11y = 无障�?
-lingmo-applet-audio = 音频
-lingmo-applet-battery = 电源与电�?
-lingmo-applet-bluetooth = 蓝牙
-lingmo-applet-input-sources = 输入�?
-lingmo-applet-minimize = 最小化窗口
-lingmo-applet-network = 网络
-lingmo-applet-notifications = 通知中心
-lingmo-applet-power = 用户会话
-lingmo-applet-status-area = 通知托盘
-lingmo-applet-tiling = 平铺
-lingmo-applet-time = 日期、时间与日历
-lingmo-applet-workspaces = 工作区编�?
-lingmo-panel-app-button = 应用程序库按�?
-lingmo-panel-launcher-button = 启动器按�?
-lingmo-panel-workspaces-button = 工作区按�?
-lingmo-applet-battery-comment = 电源模式和节能选项
-lingmo-applet-bluetooth-comment = 管理蓝牙设备
-lingmo-applet-network-comment = 管理网络连接
-lingmo-applet-notifications-comment = 管理通知和勿扰模�?
-lingmo-applet-power-comment = 锁屏、登出、待机、重启和关机
-lingmo-app-list-keywords = Lingmo;小部�?应用;应用托盘;列表;任务�?
-lingmo-applet-a11y-comment = 从面板调整无障碍设置
-lingmo-applet-a11y-keywords = Lingmo;小部�?无障�?屏幕;阅读�?放大�?对比;颜色;
-lingmo-applet-audio-comment = 音频设备选择、音量调整和 MPRIS 媒体控制
-lingmo-applet-audio-keywords = Lingmo;小部�?声音;音频;MPRIS;
-lingmo-applet-battery-keywords = Lingmo;小部�?电源;电池;
-lingmo-applet-bluetooth-keywords = Lingmo;小部�?蓝牙;
-lingmo-applet-status-area-keywords = Lingmo;小部�?应用;指示;通知;托盘;状�?
-lingmo-applet-tiling-comment = 管理聚焦窗口提示、当前和每个工作区自动平�?
-lingmo-app-list-comment = 启动已固定应用和管理窗口
-lingmo-applet-input-sources-comment = 切换输入�?
-lingmo-applet-input-sources-keywords = Lingmo;小部�?输入;输入�?
-lingmo-applet-minimize-comment = 管理最小化窗口
-lingmo-applet-minimize-keywords = Lingmo;小部�?最小化;
-lingmo-applet-network-keywords = Lingmo;小部�?网络;
-lingmo-applet-notifications-keywords = Lingmo;小部�?通知;
-lingmo-applet-tiling-keywords = Lingmo;小部�?平铺;提示;工作�?
-lingmo-applet-time-comment = 在面板上显示时间以及弹出日历
-lingmo-applet-time-keywords = Lingmo;小部�?日期;时间;日历;
-lingmo-applet-workspaces-comment = 在面板上切换带有编号的工作区
-lingmo-applet-workspaces-keywords = Lingmo;小部�?工作�?
-lingmo-panel-app-button-comment = 打开应用程序库来启动已安装的应用
-lingmo-panel-app-button-keywords = Lingmo;小部�?应用;�?托盘;
-lingmo-panel-launcher-button-comment = 打开启动器以搜索应用以及执行命令
-lingmo-panel-launcher-button-keywords = Lingmo;小部�?启动�?
-lingmo-panel-workspaces-button-comment = 打开工作区总览以管理和切换工作�?
-lingmo-panel-workspaces-button-keywords = Lingmo;小部�?工作�?总览;
-lingmo-applet-power-keywords = Lingmo;小部�?用户;会话;锁屏;登录;登出;重启;关机;待机;
-lingmo-applet-status-area-comment = 可能在面板上显示的应用指�?
-
+lingmo-app-list = 搴旂敤鎵樼洏
+lingmo-applet-a11y = 鏃犻殰纰?lingmo-applet-audio = 闊抽
+lingmo-applet-battery = 鐢垫簮涓庣數姹?lingmo-applet-bluetooth = 钃濈墮
+lingmo-applet-input-sources = 杈撳叆婧?lingmo-applet-minimize = 鏈€灏忓寲绐楀彛
+lingmo-applet-network = 缃戠粶
+lingmo-applet-notifications = 閫氱煡涓績
+lingmo-applet-power = 鐢ㄦ埛浼氳瘽
+lingmo-applet-status-area = 閫氱煡鎵樼洏
+lingmo-applet-tiling = 骞抽摵
+lingmo-applet-time = 鏃ユ湡銆佹椂闂翠笌鏃ュ巻
+lingmo-applet-workspaces = 宸ヤ綔鍖虹紪鍙?LINGMO-panel-app-button = 搴旂敤绋嬪簭搴撴寜閽?LINGMO-panel-launcher-button = 鍚姩鍣ㄦ寜閽?LINGMO-panel-workspaces-button = 宸ヤ綔鍖烘寜閽?lingmo-applet-battery-comment = 鐢垫簮妯″紡鍜岃妭鑳介€夐」
+lingmo-applet-bluetooth-comment = 绠＄悊钃濈墮璁惧
+lingmo-applet-network-comment = 绠＄悊缃戠粶杩炴帴
+lingmo-applet-notifications-comment = 绠＄悊閫氱煡鍜屽嬁鎵版ā寮?lingmo-applet-power-comment = 閿佸睆銆佺櫥鍑恒€佸緟鏈恒€侀噸鍚拰鍏虫満
+lingmo-app-list-keywords = LINGMO;灏忛儴浠?搴旂敤;搴旂敤鎵樼洏;鍒楄〃;浠诲姟鏍?
+lingmo-applet-a11y-comment = 浠庨潰鏉胯皟鏁存棤闅滅璁剧疆
+lingmo-applet-a11y-keywords = LINGMO;灏忛儴浠?鏃犻殰纰?灞忓箷;闃呰鍣?鏀惧ぇ闀?瀵规瘮;棰滆壊;
+lingmo-applet-audio-comment = 闊抽璁惧閫夋嫨銆侀煶閲忚皟鏁村拰 MPRIS 濯掍綋鎺у埗
+lingmo-applet-audio-keywords = LINGMO;灏忛儴浠?澹伴煶;闊抽;MPRIS;
+lingmo-applet-battery-keywords = LINGMO;灏忛儴浠?鐢垫簮;鐢垫睜;
+lingmo-applet-bluetooth-keywords = LINGMO;灏忛儴浠?钃濈墮;
+lingmo-applet-status-area-keywords = LINGMO;灏忛儴浠?搴旂敤;鎸囩ず;閫氱煡;鎵樼洏;鐘舵€?
+lingmo-applet-tiling-comment = 绠＄悊鑱氱劍绐楀彛鎻愮ず銆佸綋鍓嶅拰姣忎釜宸ヤ綔鍖鸿嚜鍔ㄥ钩閾?lingmo-app-list-comment = 鍚姩宸插浐瀹氬簲鐢ㄥ拰绠＄悊绐楀彛
+lingmo-applet-input-sources-comment = 鍒囨崲杈撳叆婧?lingmo-applet-input-sources-keywords = LINGMO;灏忛儴浠?杈撳叆;杈撳叆婧?
+lingmo-applet-minimize-comment = 绠＄悊鏈€灏忓寲绐楀彛
+lingmo-applet-minimize-keywords = LINGMO;灏忛儴浠?鏈€灏忓寲;
+lingmo-applet-network-keywords = LINGMO;灏忛儴浠?缃戠粶;
+lingmo-applet-notifications-keywords = LINGMO;灏忛儴浠?閫氱煡;
+lingmo-applet-tiling-keywords = LINGMO;灏忛儴浠?骞抽摵;鎻愮ず;宸ヤ綔鍖?
+lingmo-applet-time-comment = 鍦ㄩ潰鏉夸笂鏄剧ず鏃堕棿浠ュ強寮瑰嚭鏃ュ巻
+lingmo-applet-time-keywords = LINGMO;灏忛儴浠?鏃ユ湡;鏃堕棿;鏃ュ巻;
+lingmo-applet-workspaces-comment = 鍦ㄩ潰鏉夸笂鍒囨崲甯︽湁缂栧彿鐨勫伐浣滃尯
+lingmo-applet-workspaces-keywords = LINGMO;灏忛儴浠?宸ヤ綔鍖?
+LINGMO-panel-app-button-comment = 鎵撳紑搴旂敤绋嬪簭搴撴潵鍚姩宸插畨瑁呯殑搴旂敤
+LINGMO-panel-app-button-keywords = LINGMO;灏忛儴浠?搴旂敤;搴?鎵樼洏;
+LINGMO-panel-launcher-button-comment = 鎵撳紑鍚姩鍣ㄤ互鎼滅储搴旂敤浠ュ強鎵ц鍛戒护
+LINGMO-panel-launcher-button-keywords = LINGMO;灏忛儴浠?鍚姩鍣?
+LINGMO-panel-workspaces-button-comment = 鎵撳紑宸ヤ綔鍖烘€昏浠ョ鐞嗗拰鍒囨崲宸ヤ綔鍖?LINGMO-panel-workspaces-button-keywords = LINGMO;灏忛儴浠?宸ヤ綔鍖?鎬昏;
+lingmo-applet-power-keywords = LINGMO;灏忛儴浠?鐢ㄦ埛;浼氳瘽;閿佸睆;鐧诲綍;鐧诲嚭;閲嶅惎;鍏虫満;寰呮満;
+lingmo-applet-status-area-comment = 鍙兘鍦ㄩ潰鏉夸笂鏄剧ず鐨勫簲鐢ㄦ寚绀?

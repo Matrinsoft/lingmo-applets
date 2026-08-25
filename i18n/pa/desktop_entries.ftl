@@ -1,36 +1,24 @@
-lingmo-app-list = ਐਪ ਟਰ�?
-lingmo-applet-a11y = ਅਸੈਸਬਿਲਟੀ
-lingmo-applet-audio = ਸਾਊਂ�?
-lingmo-applet-battery = ਪਾਵਰ ਅਤ�?ਬੈਟਰੀ
-lingmo-applet-battery-comment = ਪਾਵਰ ਮੋ�?ਅਤ�?ਪਾਵਰ ਬੱਚਤ ਚੋਣਾ�?
-lingmo-applet-bluetooth = ਬਲੂਟੁੱ�?
-lingmo-applet-bluetooth-comment = ਬਲੂਟੁੱ�?ਡਿਵਾਈਸਾਂ ਦਾ ਇੰਤਜ਼ਾਮ
-lingmo-applet-input-sources = ਇਨਪੁੱਟ ਸਰੋਤ
-lingmo-applet-input-sources-comment = ਇਨਪੁੱਟ ਸਰੋਤਾਂ ਵਿਚਾਲੇ ਬਦਲੋ
-lingmo-applet-network = ਨੈੱਟਵਰ�?
-lingmo-applet-network-comment = ਨੈੱਟਵਰ�?ਕਨੈਕਸ਼ਨਾਂ ਦਾ ਇੰਤਜ਼ਾਮ
-lingmo-applet-network-keywords = Lingmo;ਐਪਲਿ�?ਨੈੱਟਵਰ�?
-lingmo-applet-notifications = ਨੋਟੀਫਿਕੇਸ਼ਨ ਕੇਂਦ�?
-lingmo-applet-notifications-keywords = Lingmo;ਐਪਲਿ�?ਨੋਟੀਫਿਕੇਸ਼ਨ;
-lingmo-applet-power = ਵਰਤੋਂਕਾਰ ਸ਼ੈਸ਼ਨ
-lingmo-applet-power-comment = ਲਾ�?ਸਕਰੀ�? ਲਾ�?ਆਉ�? ਸਸਪੈਂਡ, ਮੁ�?ਚਾਲੂ ਅਤ�?ਬੰ�?ਕਰ�?
-lingmo-applet-status-area = ਨੋਟੀਫਿਕੇਸ਼ਨ ਟਰ�?
-lingmo-applet-time = ਤਾਰੀ�? ਸਮਾਂ ਅਤ�?ਕੈਲੰਡਰ
-lingmo-applet-time-comment = ਕੈਲੰਡਰ ਪੌ�?ਅੱ�?ਨਾ�?ਪੈਨਲ ਵਿੱਚ ਮੌਜੂਦਾ ਸਮੇਂ ਨੂ�?ਦਿਖਾਉਂਦਾ ਹੈ
-lingmo-panel-app-button = ਐਪ ਲਾਇਬਰੇਰੀ ਬਟ�?
-lingmo-panel-launcher-button = ਲਾਂਚ�?ਬਟ�?
-lingmo-panel-workspaces-button = ਵਰਕਸਪੇ�?ਬਟ�?
-lingmo-applet-audio-keywords = Lingmo;ਐਪਲਿ�?ਸਾਊਂ�?ਆਡੀ�?MPRIS;
-lingmo-applet-battery-keywords = Lingmo;ਐਪਲਿ�?ਪਾਵਰ;ਬੈਟਰੀ;
-lingmo-applet-bluetooth-keywords = Lingmo;ਐਪਲਿ�?ਬਲੂਟੁੱ�?
-lingmo-applet-input-sources-keywords = Lingmo;ਐਪਲਿ�?ਇਨਪੁੱਟ;ਸਰੋਤ;
-lingmo-applet-notifications-comment = ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ ਅਤ�?ਤੰ�?ਨਾ ਕਰ�?ਦਾ ਇੰਤਜ਼ਾਮ
-lingmo-applet-power-keywords = Lingmo;ਐਪਲਿ�?ਵਰਤੋਂਕਾਰ;ਸ਼ੈਸ਼ਨ;ਲਾ�?ਲਾ�?ਮੁ�?ਚਾਲੂ;ਬੰ�?ਕਰ�?ਸਸਪੈਂਡ;
-lingmo-applet-status-area-keywords = Lingmo;ਐਪਲਿ�?ਇੰਡੀਕੇਟਰ;ਨੋਟੀਫਿਕੇਸ਼ਨ;ਟਰ�?ਸਥਿਤੀ;
-lingmo-applet-time-keywords = Lingmo;ਐਪਲਿ�?ਤਾਰੀ�?ਸਮਾਂ;ਕੈਲੰਡਰ;
-lingmo-applet-workspaces-keywords = Lingmo;ਐਪਲਿ�?ਵਰਕਸਪੇ�?
-lingmo-panel-app-button-keywords = Lingmo;ਐਪਲਿ�?ਐਪ;ਲਾਇਬਰੇਰੀ;ਟਰ�?
-lingmo-panel-launcher-button-keywords = Lingmo;ਐਪਲਿ�?ਲਾਂਚ�?ਰਨ�?
-lingmo-panel-workspaces-button-keywords = Lingmo;ਐਪਲਿ�?ਵਰਕਸਪੇ�?ਸਾ�?
-lingmo-app-list-keywords = Lingmo;ਐਪਲਿ�?ਐਪ;ਟਰ�?ਲਿਸਟ;ਟਾਸਕ;ਪੱਟੀ;
-
+lingmo-app-list = 啜愢í 啜熰ò喋?lingmo-applet-a11y = 啜呧ǜ喋堗ǜ啜啜侧喋€
+lingmo-applet-audio = 啜膏ň啜娻▊啜?lingmo-applet-battery = 啜ň啜掂ò 啜呧à喋?啜﹫啜熰ò喋€
+lingmo-applet-battery-comment = 啜ň啜掂ò 啜啜?啜呧à喋?啜ň啜掂ò 啜┍啜氞à 啜氞啜｀ň啜?lingmo-applet-bluetooth = 啜ú喋傕喋佮┍啜?lingmo-applet-bluetooth-comment = 啜ú喋傕喋佮┍啜?啜∴啜掂ň啜堗ǜ啜距▊ 啜︵ň 啜囙┌啜む啜距ó
+lingmo-applet-input-sources = 啜囙è啜﹣喋编 啜膏ò喋嬥à
+lingmo-applet-input-sources-comment = 啜囙è啜﹣喋编 啜膏ò喋嬥à啜距▊ 啜掂啜氞ň啜侧﹪ 啜é啜侧
+lingmo-applet-network = 啜ㄠ﹫喋编啜掂ò啜?lingmo-applet-network-comment = 啜ㄠ﹫喋编啜掂ò啜?啜曕è喋堗〞啜多è啜距▊ 啜︵ň 啜囙┌啜む啜距ó
+lingmo-applet-network-keywords = LINGMO;啜愢í啜侧啜?啜ㄠ﹫喋编啜掂ò啜?
+lingmo-applet-notifications = 啜ㄠ啜熰﹢啜啜曕﹪啜多è 啜曕﹪啜傕é啜?lingmo-applet-notifications-keywords = LINGMO;啜愢í啜侧啜?啜ㄠ啜熰﹢啜啜曕﹪啜多è;
+lingmo-applet-power = 啜掂ò啜む啜傕〞啜距ò 啜多﹫啜多è
+lingmo-applet-power-comment = 啜侧ň啜?啜膏〞啜班﹢啜? 啜侧ň啜?啜嗋▔啜? 啜膏ǜ啜﹫啜傕ā, 啜﹣喋?啜氞ň啜侧﹤ 啜呧à喋?啜┌啜?啜曕ò喋?lingmo-applet-status-area = 啜ㄠ啜熰﹢啜啜曕﹪啜多è 啜熰ò喋?lingmo-applet-time = 啜むň啜班﹢啜? 啜膏ó啜距▊ 啜呧à喋?啜曕﹫啜侧┌啜∴ò
+lingmo-applet-time-comment = 啜曕﹫啜侧┌啜∴ò 啜啜?啜呧┍啜?啜ㄠň啜?啜﹫啜ㄠú 啜掂喋编 啜啜溹﹤啜︵ň 啜膏ó喋囙▊ 啜ㄠ﹤喋?啜︵啜栢ň啜夃▊啜︵ň 啜灌﹫
+LINGMO-panel-app-button = 啜愢í 啜侧ň啜囙ì啜班﹪啜班﹢ 啜啜?LINGMO-panel-launcher-button = 啜侧ň啜傕啜?啜啜?LINGMO-panel-workspaces-button = 啜掂ò啜曕ǜ啜﹪啜?啜啜?lingmo-applet-audio-keywords = LINGMO;啜愢í啜侧啜?啜膏ň啜娻▊啜?啜嗋ā喋€啜?MPRIS;
+lingmo-applet-battery-keywords = LINGMO;啜愢í啜侧啜?啜ň啜掂ò;啜﹫啜熰ò喋€;
+lingmo-applet-bluetooth-keywords = LINGMO;啜愢í啜侧啜?啜ú喋傕喋佮┍啜?
+lingmo-applet-input-sources-keywords = LINGMO;啜愢í啜侧啜?啜囙è啜﹣喋编;啜膏ò喋嬥à;
+lingmo-applet-notifications-comment = 啜ㄠ啜熰﹢啜啜曕﹪啜多è啜距▊ 啜呧à喋?啜む┌啜?啜ㄠň 啜曕ò喋?啜︵ň 啜囙┌啜む啜距ó
+lingmo-applet-power-keywords = LINGMO;啜愢í啜侧啜?啜掂ò啜む啜傕〞啜距ò;啜多﹫啜多è;啜侧ň啜?啜侧ň啜?啜﹣喋?啜氞ň啜侧﹤;啜┌啜?啜曕ò喋?啜膏ǜ啜﹫啜傕ā;
+lingmo-applet-status-area-keywords = LINGMO;啜愢í啜侧啜?啜囙┌啜∴﹢啜曕﹪啜熰ò;啜ㄠ啜熰﹢啜啜曕﹪啜多è;啜熰ò喋?啜膏ē啜苦à喋€;
+lingmo-applet-time-keywords = LINGMO;啜愢í啜侧啜?啜むň啜班﹢啜?啜膏ó啜距▊;啜曕﹫啜侧┌啜∴ò;
+lingmo-applet-workspaces-keywords = LINGMO;啜愢í啜侧啜?啜掂ò啜曕ǜ啜﹪啜?
+LINGMO-panel-app-button-keywords = LINGMO;啜愢í啜侧啜?啜愢í;啜侧ň啜囙ì啜班﹪啜班﹢;啜熰ò喋?
+LINGMO-panel-launcher-button-keywords = LINGMO;啜愢í啜侧啜?啜侧ň啜傕啜?啜班è啜?
+LINGMO-panel-workspaces-button-keywords = LINGMO;啜愢í啜侧啜?啜掂ò啜曕ǜ啜﹪啜?啜膏ň啜?
+lingmo-app-list-keywords = LINGMO;啜愢í啜侧啜?啜愢í;啜熰ò喋?啜侧啜膏;啜熰ň啜膏〞;啜┍啜熰﹢;

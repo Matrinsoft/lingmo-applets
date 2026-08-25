@@ -1,52 +1,40 @@
-lingmo-applet-audio = 소리
-lingmo-applet-battery = 전원 & 배터�?
-lingmo-panel-app-button = �?라이브러�?버튼
-lingmo-app-list = �?트레�?
-lingmo-app-list-comment = 고정�?�?실행�?열린 �?관�?
-lingmo-app-list-keywords = Lingmo;애플�?�?트레�?목록;작업;�?
-lingmo-applet-a11y = 접근�?
-lingmo-applet-a11y-comment = 패널에서 접근�?설정 구성
-lingmo-applet-audio-keywords = Lingmo;애플�?소리;오디�?MPRIS;
-lingmo-applet-battery-comment = 전원 모드와 절전 옵션
-lingmo-applet-battery-keywords = Lingmo;애플�?전원;배터�?
-lingmo-applet-bluetooth = 블루투스
-lingmo-applet-bluetooth-comment = 블루투스 장치 관�?
-lingmo-applet-bluetooth-keywords = Lingmo;애플�?블루투스;
-lingmo-applet-input-sources = 입력 소스
-lingmo-applet-input-sources-comment = 입력 소스 �?전환
-lingmo-applet-input-sources-keywords = Lingmo;애플�?입력;소스;
-lingmo-applet-minimize = 최소화된 �?
-lingmo-applet-minimize-comment = 최소화된 �?관�?
-lingmo-applet-minimize-keywords = Lingmo;애플�?최소�?
-lingmo-applet-network = 네트워크
-lingmo-applet-network-comment = 네트워크 연결 관�?
-lingmo-applet-network-keywords = Lingmo;애플�?네트워크;
-lingmo-applet-notifications = 알림 센터
-lingmo-applet-notifications-comment = 알림 관�?�?방해 금지
-lingmo-applet-notifications-keywords = Lingmo;애플�?알림;
-lingmo-applet-power = 사용�?세션
-lingmo-applet-power-comment = 화면 잠금�?로그아웃, 절전, 재시�?�?종료
-lingmo-applet-power-keywords = Lingmo;애플�?사용�?세션;잠금;로그;재시�?종료;절전;
-lingmo-applet-status-area = 알림 트레�?
-lingmo-applet-a11y-keywords = Lingmo;애플�?접근�?접근�?스크�?리더;돋보�?대�?색상;
-lingmo-applet-audio-comment = 소리 출력 장치 선택, 음량 제어, MPRIS 미디�?제어
-lingmo-applet-status-area-comment = 패널�?메뉴�?노출�?수도 있는 �?표시�?
-lingmo-applet-tiling = 타일링
-lingmo-applet-time = 날짜와 시간 & 달력
-lingmo-applet-time-comment = 캘린�?팝업�?함께 패널�?현재 시간 표시
-lingmo-applet-time-keywords = Lingmo;애플�?날짜;시간;달력;
-lingmo-applet-workspaces-keywords = Lingmo;애플�?작업 공간;
-lingmo-panel-app-button-comment = 설치�?�?실행�?위해 �?라이브러�?열기
-lingmo-panel-app-button-keywords = Lingmo;애플�?�?라이브러�?트레�?
-lingmo-panel-launcher-button = 런처 버튼
-lingmo-applet-status-area-keywords = Lingmo;애플�?�?표시�?알림;트레�?상태;
-lingmo-applet-tiling-keywords = Lingmo;애플�?타일링;힌트;작업 공간;
-lingmo-panel-launcher-button-comment = �?검�?�?명령�?실행�?위한 런처 열기
-lingmo-panel-launcher-button-keywords = Lingmo;애플�?런처;실행�?
-lingmo-panel-workspaces-button = 작업 공간 버튼
-lingmo-panel-workspaces-button-comment = 작업 공간 관�?�?전환�?위해 작업 공간 개요 열기
-lingmo-panel-workspaces-button-keywords = Lingmo;애플�?작업 공간;개요;
-lingmo-applet-workspaces-comment = 패널에서 번호가 지정된 작업 공간 �?전환
-lingmo-applet-tiling-comment = 활성 �?강조, 현재 �?작업 공간�?자동 타일링 관�?
-lingmo-applet-workspaces = 번호가 지정된 작업 공간
-
+lingmo-applet-audio = 靻岆Μ
+lingmo-applet-battery = 鞝勳洂 & 氚绊劙毽?LINGMO-panel-app-button = 鞎?霛检澊敫岆煬毽?氩勴娂
+lingmo-app-list = 鞎?韸鸽爤鞚?lingmo-app-list-comment = 瓿犾爼霅?鞎?鞁ろ枆瓿?鞐措Π 彀?甏€毽?lingmo-app-list-keywords = LINGMO;鞎犿攲毽?鞎?韸鸽爤鞚?氇╇;鞛戩梾;氚?
+lingmo-applet-a11y = 鞝戧芳靹?lingmo-applet-a11y-comment = 韺剱鞐愳劀 鞝戧芳靹?靹れ爼 甑劚
+lingmo-applet-audio-keywords = LINGMO;鞎犿攲毽?靻岆Μ;鞓る敂鞓?MPRIS;
+lingmo-applet-battery-comment = 鞝勳洂 氇摐鞕€ 鞝堨爠 鞓奠厴
+lingmo-applet-battery-keywords = LINGMO;鞎犿攲毽?鞝勳洂;氚绊劙毽?
+lingmo-applet-bluetooth = 敫旊（韴姢
+lingmo-applet-bluetooth-comment = 敫旊（韴姢 鞛レ箻 甏€毽?lingmo-applet-bluetooth-keywords = LINGMO;鞎犿攲毽?敫旊（韴姢;
+lingmo-applet-input-sources = 鞛呺牓 靻岇姢
+lingmo-applet-input-sources-comment = 鞛呺牓 靻岇姢 臧?鞝勴櫂
+lingmo-applet-input-sources-keywords = LINGMO;鞎犿攲毽?鞛呺牓;靻岇姢;
+lingmo-applet-minimize = 斓滌唽頇旊悳 彀?lingmo-applet-minimize-comment = 斓滌唽頇旊悳 彀?甏€毽?lingmo-applet-minimize-keywords = LINGMO;鞎犿攲毽?斓滌唽頇?
+lingmo-applet-network = 雱ろ姼鞗岉伂
+lingmo-applet-network-comment = 雱ろ姼鞗岉伂 鞐瓣舶 甏€毽?lingmo-applet-network-keywords = LINGMO;鞎犿攲毽?雱ろ姼鞗岉伂;
+lingmo-applet-notifications = 鞎岆 靹柬劙
+lingmo-applet-notifications-comment = 鞎岆 甏€毽?氚?氚╉暣 旮堨
+lingmo-applet-notifications-keywords = LINGMO;鞎犿攲毽?鞎岆;
+lingmo-applet-power = 靷毄鞛?靹胳厴
+lingmo-applet-power-comment = 頇旊┐ 鞛犼笀瓿?搿滉犯鞎勳泝, 鞝堨爠, 鞛嫓鞛?氚?膦呺
+lingmo-applet-power-keywords = LINGMO;鞎犿攲毽?靷毄鞛?靹胳厴;鞛犼笀;搿滉犯;鞛嫓鞛?膦呺;鞝堨爠;
+lingmo-applet-status-area = 鞎岆 韸鸽爤鞚?lingmo-applet-a11y-keywords = LINGMO;鞎犿攲毽?鞝戧芳靹?鞝戧芳靹?鞀ろ伂毽?毽崝;霃嬰炒旮?雽€牍?靸夓儊;
+lingmo-applet-audio-comment = 靻岆Μ 於滊牓 鞛レ箻 靹犿儩, 鞚岆焿 鞝滌柎, MPRIS 氙鸽敂鞏?鞝滌柎
+lingmo-applet-status-area-comment = 韺剱鞐?氅旊壌毳?雲胳稖頃?靾橂弰 鞛堧姅 鞎?響滌嫓旮?lingmo-applet-tiling = 韮€鞚茧
+lingmo-applet-time = 雮犾鞕€ 鞁滉皠 & 雼牓
+lingmo-applet-time-comment = 旌橂Π雿?韺濎梾瓿?頃粯 韺剱鞐?順勳灛 鞁滉皠 響滌嫓
+lingmo-applet-time-keywords = LINGMO;鞎犿攲毽?雮犾;鞁滉皠;雼牓;
+lingmo-applet-workspaces-keywords = LINGMO;鞎犿攲毽?鞛戩梾 瓿店皠;
+LINGMO-panel-app-button-comment = 靹れ箻霅?鞎?鞁ろ枆鞚?鞙勴暣 鞎?霛检澊敫岆煬毽?鞐搓赴
+LINGMO-panel-app-button-keywords = LINGMO;鞎犿攲毽?鞎?霛检澊敫岆煬毽?韸鸽爤鞚?
+LINGMO-panel-launcher-button = 霟办矘 氩勴娂
+lingmo-applet-status-area-keywords = LINGMO;鞎犿攲毽?鞎?響滌嫓旮?鞎岆;韸鸽爤鞚?靸來儨;
+lingmo-applet-tiling-keywords = LINGMO;鞎犿攲毽?韮€鞚茧;頌岉姼;鞛戩梾 瓿店皠;
+LINGMO-panel-launcher-button-comment = 鞎?瓴€靸?氚?氇呺牴鞏?鞁ろ枆鞚?鞙勴暅 霟办矘 鞐搓赴
+LINGMO-panel-launcher-button-keywords = LINGMO;鞎犿攲毽?霟办矘;鞁ろ枆旮?
+LINGMO-panel-workspaces-button = 鞛戩梾 瓿店皠 氩勴娂
+LINGMO-panel-workspaces-button-comment = 鞛戩梾 瓿店皠 甏€毽?氚?鞝勴櫂鞚?鞙勴暣 鞛戩梾 瓿店皠 臧滌殧 鞐搓赴
+LINGMO-panel-workspaces-button-keywords = LINGMO;鞎犿攲毽?鞛戩梾 瓿店皠;臧滌殧;
+lingmo-applet-workspaces-comment = 韺剱鞐愳劀 氩堩樃臧€ 歆€鞝曤悳 鞛戩梾 瓿店皠 臧?鞝勴櫂
+lingmo-applet-tiling-comment = 頇滌劚 彀?臧曥“, 順勳灛 氚?鞛戩梾 瓿店皠氤?鞛愲彊 韮€鞚茧 甏€毽?lingmo-applet-workspaces = 氩堩樃臧€ 歆€鞝曤悳 鞛戩梾 瓿店皠

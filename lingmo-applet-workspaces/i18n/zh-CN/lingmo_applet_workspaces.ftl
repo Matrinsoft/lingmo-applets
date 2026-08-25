@@ -1,2 +1,1 @@
-Lingmo-applet-workspaces = Lingmo 工作�?
-
+lingmo-applet-workspaces = LINGMO 宸ヤ綔鍖?

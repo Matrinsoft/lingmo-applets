@@ -1,2 +1,1 @@
-Lingmo-applet-workspaces = ಕಾಸ್ಮಿ�?ಕಾರ್ಯಕ್ಷೇತ್ರಗಳ�?
-
+lingmo-applet-workspaces = 嗖曕簿嗖膏硩嗖部嗖?嗖曕簿嗖班硩嗖矔喑嵿卜喑囙菠喑嵿舶嗖椸渤喑?

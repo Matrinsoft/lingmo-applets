@@ -1,35 +1,18 @@
-lingmo-applet-a11y = अभिगम्यत�?
-lingmo-applet-a11y-comment = पैनल से अभिगम्यत�?सेटिंग्स विन्यस्त करें
-lingmo-applet-audio = ध्वन�?
-lingmo-applet-audio-comment = ऑडिय�?उपकर�?चय�? ध्वन�?स्तर नियंत्रण और MPRIS मीडिया नियंत्रण
-lingmo-applet-battery = पावर और बैटरी
-lingmo-applet-battery-comment = पावर मो�?और ऊर्ज�?बच�?विकल्प
-lingmo-applet-battery-keywords = Lingmo;ऐपले�?पावर;बैटरी
-lingmo-applet-bluetooth = ब्लूटू�?
-lingmo-applet-bluetooth-comment = ब्लूटू�?डिवाइस प्रबंधित करें
-lingmo-applet-input-sources = इनपु�?स्रो�?
-lingmo-applet-input-sources-comment = इनपु�?स्रोतो�?के बी�?स्वि�?करें
-lingmo-applet-input-sources-keywords = Lingmo; Applet; इनपु�? स्रो�?
-lingmo-applet-minimize = न्यूनत�?की गई विंडोज�?
-lingmo-applet-minimize-comment = न्यूनत�?की गई विंडोज�?प्रबंधित करें
-lingmo-applet-network = नेटवर्�?
-lingmo-applet-network-comment = नेटवर्�?कनेक्श�?प्रबंधित करें
-lingmo-applet-notifications = नोटिफ़िकेश�?सेंट�?
-lingmo-applet-notifications-comment = नोटिफ़िकेश�?और डु नॉ�?डिस्टर्ब प्रबंधित करें
-lingmo-applet-power = यूज़�?सेशन
-lingmo-applet-power-comment = स्क्री�?लॉ�?करें, लॉ�?आउ�?करें, सस्पें�?करें, रीबू�?करें और शटडाउन करें
-lingmo-applet-status-area = नोटिफ़िकेश�?ट्रे
-lingmo-applet-status-area-comment = एप्लिकेश�?इंडिकेटर जो पैनल मे�?मेनू एक्सपोर्�?कर सकते है�?
-lingmo-applet-tiling = टाइलिं�?
-lingmo-applet-tiling-comment = सक्रिय हिंट, वर्तमा�?और प्रत�?वर्कस्पे�?ऑट�?टाइलिं�?प्रबंधित करें
-lingmo-applet-time = दिनांक, सम�?और कैलेंड�?
-lingmo-applet-time-comment = पैनल मे�?कैलेंड�?पॉपअ�?के सा�?वर्तमा�?सम�?प्रदर्शि�?करें
-lingmo-applet-workspaces = क्रमांकि�?वर्कस्पे�?
-lingmo-applet-workspaces-comment = पैनल मे�?क्रमांकि�?वर्कस्पे�?के बी�?स्वि�?करें
-lingmo-panel-app-button = ऐप लाइब्रेरी बट�?
-lingmo-panel-app-button-comment = इंस्टॉ�?कि�?गए एप्लिकेश�?लॉन्�?करने के लि�?ऐप लाइब्रेरी खोले�?
-lingmo-panel-launcher-button = लॉन्चर बट�?
-lingmo-panel-launcher-button-comment = एप्लिकेश�?खोजन�?और कमां�?चलान�?के लि�?लॉन्चर खोले�?
-lingmo-panel-workspaces-button = वर्कस्पे�?बट�?
-lingmo-panel-workspaces-button-comment = वर्कस्पे�?प्रबंधित करने और उनके बी�?स्वि�?करने के लि�?वर्कस्पे�?ओवरव्य�?खोले�?
-
+lingmo-applet-a11y = 啶呧き啶苦啶啶い啶?lingmo-applet-a11y-comment = 啶啶ㄠげ 啶膏 啶呧き啶苦啶啶い啶?啶膏啶熰た啶傕啷嵿じ 啶掂た啶ㄠ啶じ啷嵿い 啶曕ぐ啷囙
+lingmo-applet-audio = 啶о啶掂え啶?lingmo-applet-audio-comment = 啶戉ぁ啶苦く啷?啶夃お啶曕ぐ啶?啶氞く啶? 啶о啶掂え啶?啶膏啶むぐ 啶ㄠた啶啶む啶班ぃ 啶斷ぐ MPRIS 啶啶∴た啶ぞ 啶ㄠた啶啶む啶班ぃ
+lingmo-applet-battery = 啶ぞ啶掂ぐ 啶斷ぐ 啶啶熰ぐ啷€
+lingmo-applet-battery-comment = 啶ぞ啶掂ぐ 啶啶?啶斷ぐ 啶娻ぐ啷嵿啶?啶啶?啶掂た啶曕げ啷嵿お
+lingmo-applet-battery-keywords = LINGMO;啶愢お啶侧啶?啶ぞ啶掂ぐ;啶啶熰ぐ啷€
+lingmo-applet-bluetooth = 啶啶侧啶熰啶?lingmo-applet-bluetooth-comment = 啶啶侧啶熰啶?啶∴た啶掂ぞ啶囙じ 啶啶班が啶傕ぇ啶苦い 啶曕ぐ啷囙
+lingmo-applet-input-sources = 啶囙え啶啶?啶膏啶班啶?lingmo-applet-input-sources-comment = 啶囙え啶啶?啶膏啶班啶む啶?啶曕 啶啶?啶膏啶掂た啶?啶曕ぐ啷囙
+lingmo-applet-input-sources-keywords = LINGMO; Applet; 啶囙え啶啶? 啶膏啶班啶?
+lingmo-applet-minimize = 啶ㄠ啶啶ㄠい啶?啶曕 啶椸 啶掂た啶傕ぁ啷嬥啶?lingmo-applet-minimize-comment = 啶ㄠ啶啶ㄠい啶?啶曕 啶椸 啶掂た啶傕ぁ啷嬥啶?啶啶班が啶傕ぇ啶苦い 啶曕ぐ啷囙
+lingmo-applet-network = 啶ㄠ啶熰さ啶班啶?lingmo-applet-network-comment = 啶ㄠ啶熰さ啶班啶?啶曕え啷囙啷嵿ざ啶?啶啶班が啶傕ぇ啶苦い 啶曕ぐ啷囙
+lingmo-applet-notifications = 啶ㄠ啶熰た啶ぜ啶苦啷囙ざ啶?啶膏啶傕啶?lingmo-applet-notifications-comment = 啶ㄠ啶熰た啶ぜ啶苦啷囙ざ啶?啶斷ぐ 啶∴ 啶ㄠ啶?啶∴た啶膏啶熰ぐ啷嵿が 啶啶班が啶傕ぇ啶苦い 啶曕ぐ啷囙
+lingmo-applet-power = 啶啶溹ぜ啶?啶膏啶多え
+lingmo-applet-power-comment = 啶膏啶曕啶班啶?啶侧啶?啶曕ぐ啷囙, 啶侧啶?啶嗋啶?啶曕ぐ啷囙, 啶膏じ啷嵿お啷囙啶?啶曕ぐ啷囙, 啶班啶啶?啶曕ぐ啷囙 啶斷ぐ 啶多啶∴ぞ啶夃え 啶曕ぐ啷囙
+lingmo-applet-status-area = 啶ㄠ啶熰た啶ぜ啶苦啷囙ざ啶?啶熰啶班
+lingmo-applet-status-area-comment = 啶忇お啷嵿げ啶苦啷囙ざ啶?啶囙啶∴た啶曕啶熰ぐ 啶溹 啶啶ㄠげ 啶啶?啶啶ㄠ 啶忇啷嵿じ啶啶班啶?啶曕ぐ 啶膏啶む 啶灌啶?lingmo-applet-tiling = 啶熰ぞ啶囙げ啶苦啶?lingmo-applet-tiling-comment = 啶膏啷嵿ぐ啶苦く 啶灌た啶傕, 啶掂ぐ啷嵿い啶ぞ啶?啶斷ぐ 啶啶班い啶?啶掂ぐ啷嵿啶膏啶啶?啶戉啷?啶熰ぞ啶囙げ啶苦啶?啶啶班が啶傕ぇ啶苦い 啶曕ぐ啷囙
+lingmo-applet-time = 啶︵た啶ㄠぞ啶傕, 啶膏ぎ啶?啶斷ぐ 啶曕啶侧啶傕ぁ啶?lingmo-applet-time-comment = 啶啶ㄠげ 啶啶?啶曕啶侧啶傕ぁ啶?啶啶啶?啶曕 啶膏ぞ啶?啶掂ぐ啷嵿い啶ぞ啶?啶膏ぎ啶?啶啶班う啶班啶多た啶?啶曕ぐ啷囙
+lingmo-applet-workspaces = 啶曕啶班ぎ啶距啶曕た啶?啶掂ぐ啷嵿啶膏啶啶?lingmo-applet-workspaces-comment = 啶啶ㄠげ 啶啶?啶曕啶班ぎ啶距啶曕た啶?啶掂ぐ啷嵿啶膏啶啶?啶曕 啶啶?啶膏啶掂た啶?啶曕ぐ啷囙
+LINGMO-panel-app-button = 啶愢お 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶啶?LINGMO-panel-app-button-comment = 啶囙啶膏啶熰啶?啶曕た啶?啶椸 啶忇お啷嵿げ啶苦啷囙ざ啶?啶侧啶ㄠ啶?啶曕ぐ啶ㄠ 啶曕 啶侧た啶?啶愢お 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶栢啶侧啶?LINGMO-panel-launcher-button = 啶侧啶ㄠ啶氞ぐ 啶啶?LINGMO-panel-launcher-button-comment = 啶忇お啷嵿げ啶苦啷囙ざ啶?啶栢啶溹え啷?啶斷ぐ 啶曕ぎ啶距啶?啶氞げ啶距え啷?啶曕 啶侧た啶?啶侧啶ㄠ啶氞ぐ 啶栢啶侧啶?LINGMO-panel-workspaces-button = 啶掂ぐ啷嵿啶膏啶啶?啶啶?LINGMO-panel-workspaces-button-comment = 啶掂ぐ啷嵿啶膏啶啶?啶啶班が啶傕ぇ啶苦い 啶曕ぐ啶ㄠ 啶斷ぐ 啶夃え啶曕 啶啶?啶膏啶掂た啶?啶曕ぐ啶ㄠ 啶曕 啶侧た啶?啶掂ぐ啷嵿啶膏啶啶?啶撪さ啶班さ啷嵿く啷?啶栢啶侧啶?

@@ -1,9 +1,8 @@
 run = Selkem
-run-on = Selkem ɣef { $gpu }
+run-on = Selkem 桑ef { $gpu }
 run-on-default = (Amezwer)
-quit = Tuffɣa
-quit-all = Ffeɣ-iten akk
+quit = Tuff桑a
+quit-all = Ffe桑-iten akk
 new-window = Asfaylu Amaynut
-Lingmo-app-list = Afeggag n yisnasen
-pin = Sente�?ɣer ufeggag n yisnasen
-
+lingmo-app-list = Afeggag n yisnasen
+pin = Sente岣?桑er ufeggag n yisnasen
