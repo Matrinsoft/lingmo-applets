@@ -31,7 +31,7 @@ use cosmic::{
     theme::{self, Button},
     widget::{button, divider, icon, scrollable, slider, space, text, toggler},
 };
-use cosmic_applets_config::battery::BatteryAppletConfig;
+use lingmo_applets_config::battery::BatteryAppletConfig;
 use cosmic_config::{Config, CosmicConfigEntry};
 use lingmo_settings_daemon_subscription as settings_daemon;
 use lingmo_settings_upower_subscription::{
@@ -998,5 +998,6 @@ impl cosmic::Application for LingmoBatteryApplet {
         Some(cosmic::applet::style())
     }
 }
+
 
 

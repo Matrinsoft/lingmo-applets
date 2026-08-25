@@ -57,7 +57,7 @@ use cosmic::{
     desktop::fde::{self, DesktopEntry, get_languages_from_env, unicase::Ascii},
     widget::DndSource,
 };
-use cosmic_app_list_config::{APP_ID, AppListConfig};
+use lingmo_app_list_config::{APP_ID, AppListConfig};
 use cosmic_protocols::toplevel_info::v1::client::zcosmic_toplevel_handle_v1::State;
 use futures::future::pending;
 use rustc_hash::FxHashMap;
@@ -651,7 +651,7 @@ impl LingmoAppList {
     }
 
     fn is_on_current_monitor_and_workspace(&self, toplevel_info: &ToplevelInfo) -> bool {
-        use cosmic_app_list_config::ToplevelFilter;
+        use lingmo_app_list_config::ToplevelFilter;
 
         let on_active_workspace = self.active_workspaces.is_empty()
             || toplevel_info.workspace.is_empty()
@@ -2598,5 +2598,6 @@ impl AsMimeTypes for DndPathBuf {
         Some(Cow::Owned(self.0.to_str()?.as_bytes().to_vec()))
     }
 }
+
 
 
